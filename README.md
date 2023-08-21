@@ -12,11 +12,11 @@ UCook是一個食譜分享平台，優化食譜的搜尋與發表過程，讓料
 ### 安裝步驟
 1. Clone the repo
    ```
-   git clone https://github.com/shaojintian/Best_README_template.git
+   git clone https://github.com/Anne0214/slnUCookRecipe.git
    ```
-1. Clone Api repo
+1. Clone Api repo(將部分API抽離在另個專案以練習開API，故也要下載該API的專案)
    ```
-   git clone https://github.com/shaojintian/Best_README_template.git
+   git clone https://github.com/Anne0214/solMSITUCookApi.git
    ```
 1. 在MSSQL Server Management Studio執行本Repo中的`ProjectUCookDatabase.sql`指令檔，建立資料庫
 2. 詢問作者API Key後，將API Key填入 `appsetting.json`中的`ChatGPTAPIKey`的value
@@ -49,7 +49,9 @@ UCook是一個食譜分享平台，優化食譜的搜尋與發表過程，讓料
 - 伺服器端快取: Memurai
 ### 作者
 **Anne** 
+
 做了兩年多的PM，轉職當後端工程師，這是我的第一個專案，歡迎賜教!
+
 我的信箱
 ```
 a4728tw@gmail.com
