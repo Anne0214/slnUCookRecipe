@@ -48,6 +48,10 @@ UCook是一個食譜分享平台，優化食譜的搜尋與發表過程，讓料
 - 第三方API: Imgur、ChatGPT(Chat Completions API)、農業部資料開放平台
 - 伺服器端快取: Memurai
 ### 作者
-**Anne**
+**Anne** 
 做了兩年多的PM，轉職當後端工程師，這是我的第一個專案，歡迎賜教!
+我的信箱
+```
+a4728tw@gmail.com
+```
 
