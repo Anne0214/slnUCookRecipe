@@ -1,0 +1,271 @@
+﻿
+@{
+    ViewData["Title"] = "註冊會員";
+    Layout = "_LayoutForMember";
+}
+
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v17.0" nonce="gj0lYQGr"></script>
+
+    <div class="row">
+        <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+            <a asp-controller="home" asp-action="index"><img src="/Images/core-images/logo.png" alt="logo" style="width:100px;"></a>
+            <div class="d-input">
+
+                <form name="FormRegister" method="post" asp-controller="home" asp-action="register">
+                    <h3 style="text-align:center;">註冊開始使用UCook</h3>
+                    <div class="form-floating">
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="user@xxx.com" autocomplete="off" required>
+                        <label for="Email">Email(帳號)</label>
+                        <p class="invalid-feedback"></p>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="Password" name="Password" placeholder="xxx" maxlength="20" minlenth="8" required pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*\W).{8,30}$">
+                        <label for="Password">密碼</label>
+                        <i id="checkEye" class="fa-solid fa-eye"></i>
+                        <p style="font-size:0.8rem;">密碼須至少8字，並包含特殊符號、數字、大小寫英文字母</p>
+                        <div class="invalid-feedback">密碼不符合格式</div>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="PasswordConfirm" name="PasswordConfirm" placeholder="xxx" required>
+                        <label for="PasswordConfirm">密碼確認</label>
+                    <p class="invalid-feedback" >與密碼不一致!</p>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="NickName" name="NickName" placeholder="xxxx" maxlength="20" minlength="1" autocomplete="off" required>
+                        <label for="NickName">暱稱</label>
+                    <p class="invalid-feedback">這個好聽的名字已經有人取啦，換個吧!</p>
+
+                    </div>
+                    <div style="text-align:center;">
+                        <button type="submit" class="btn btn-primary" style="width:100%" id="btnSubmit">註冊</button>
+                    </div>
+                </form>
+                <hr class="hr">
+                <div id="third-party-login-btn">
+                    <div>
+                        <script src="https://accounts.google.com/gsi/client" async defer></script>
+                        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false">
+                        </div>
+                        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="pill" data-logo_alignment="left">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="fb-login-button" data-size="large" data-width="350" data-button-type="login_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    </div>
+                    <div style="text-align:center;">
+                        有帳號?
+                        <a asp-controller="home" asp-action="login" style="color:var(--orange);"> 登入</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6" style="height:100vh;overflow:hidden;" id="d-side-img">
+            <img src="/Images/core-images/loginSideImage.jpg" style="width:100%;" alt="形象照" style="object-fit:cover;" id="side-img">
+        </div>
+    </div>
+
+@section Scripts{
+    <script>
+        $("#checkEye").click(function () {
+            if ($(this).hasClass('fa-eye')) {
+                $("#Password").attr('type', 'text');
+            } else {
+                $("#Password").attr('type', 'password');
+            }
+            $(this).toggleClass('fa-eye').toggleClass('fa-eye-slash');
+        });
+    </script>
+    <script>
+        //註冊
+        $("form").submit((e) => {
+            e.preventDefault();
+            if ($(".invalid-feedback").is(":visible")
+            ) {
+                return;
+            }
+            //2.按鈕disabled、變loading
+            $("#btnSubmit").attr("disabled", "diabled")
+            $("#btnSubmit").html("處理中")
+            //3.打post
+            const formData = new FormData(document.FormRegister);
+            Register(formData);
+        })
+        async function Register(f) {
+            try {
+                const response = await fetch('@Url.Content("~/Home/Register")', {
+                    body: f,
+                    method: 'POST',
+                    redirect:'follow'
+                });
+                if (response.status == 400) {
+                    //失敗
+                    Swal.fire({
+                        icon: 'error',
+                        title: '該帳號已註冊，請登入或使用其他信箱註冊',
+                        timer: 3000,
+                        timerProgressBar: true,
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                    })
+                    //按鈕恢復原狀
+                    $("#btnSubmit").html("註冊");
+                    $('#btnSubmit').removeAttr("disabled");
+                    return;
+                }
+                if(response.ok){
+                    const url = await response.text();
+                    window.location = url;
+                    return;
+                }
+
+                Swal.fire({
+                    position: 'bottom-start',
+                    icon: 'error',
+                    title: '註冊失敗',
+                    text: '目前忙碌中，請稍後再試',
+                    timer: 2500,
+                    timerProgressBar: true,
+                    toast: true,
+                    showConfirmButton: false,
+                })
+                //按鈕恢復原狀
+                $("#btnSubmit").html("註冊");
+                $('#btnSubmit').removeAttr("disabled");
+                return;
+
+            } catch (error) {
+                //失敗
+                console.log(error)
+                    Swal.fire({
+                        position: 'bottom-start',
+                        icon: 'error',
+                        title: '註冊失敗',
+                        text: '目前忙碌中，請稍後再試',
+                        timer: 2500,
+                        timerProgressBar: true,
+                        toast: true,
+                        showConfirmButton: false,
+                    })
+                    //按鈕恢復原狀
+                    $("#btnSubmit").html("註冊");
+                    $('#btnSubmit').removeAttr("disabled");
+            }
+        }
+    </script>
+
+    <script>
+        //確認信箱是否有填 & 格式是否正確 &是否註冊過
+        $("#Email").blur(function () {
+            let s = this.validity;
+            let msg = "";
+            switch (true) {
+                case s.valueMissing:
+                    msg = "要填信箱喔";
+                    break;
+                case s.typeMismatch:
+                    msg = `這不是正確的信箱格式> <`;
+                    break;
+            }
+            if (!(msg.length === 0)) {
+                $(this).siblings(".invalid-feedback").text(msg).show();
+            } else {
+                const email = $(this).val();
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Content("~/home/CheckSameEmail")' + `/?email=${email}`,
+                }).done(res => {
+                    if (res == "重複") {
+                        msg = `這個信箱已經註冊過，請使用登入`;
+                        $(this).siblings(".invalid-feedback").text(msg).show();
+                    } else {
+                        $(this).siblings(".invalid-feedback").hide();
+                    }
+                }
+                ).fail(err => console.log(err));
+            }
+
+        })
+    </script>
+    <script>
+        //確認密碼是否有填 & 格式是否正確
+        $("#Password").blur(function () {
+            let s = this.validity;
+            let msg = "";
+            switch (true) {
+                case s.valueMissing:
+                    msg = "要填密碼喔";
+                    break;
+                case s.patternMismatch:
+                    msg = `密碼不符合格式要求`;
+                    break;
+            }
+            if (!(msg.length === 0)) {
+                $(this).siblings(".invalid-feedback").text(msg).show();
+            } else {
+                $(this).siblings(".invalid-feedback").hide();
+            }
+        })
+    </script>
+    <script>
+        //確認密碼是否一致
+        $("#PasswordConfirm").blur(function(){
+            const corr = $("#Password").val();
+            const confirm = $("#PasswordConfirm").val();
+            let msg = "與密碼不一致";
+            if(!(corr ==confirm)){
+                $(this).siblings(".invalid-feedback").text(msg).show();
+            }else{
+                $(this).siblings(".invalid-feedback").hide();
+
+            }
+        })
+    </script>
+    <script>
+        //確認是否有暱稱重複
+        $("#NickName").blur(function(){
+            let msg="";
+            if ($(this).valueMissing){
+                msg = "你還沒取暱稱喔";
+               $(this).siblings(".invalid-feedback").text(msg).show();
+            }else{
+                const name = $("#NickName").val();
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Content("~/home/CheckSameNickName")' + `/?name=${name}`,
+                }).done(res => {
+                    if (res == "重複") {
+                        msg = "這個好聽的名字已經有人取啦，換個吧!"
+                        $(this).siblings(".invalid-feedback").text(msg).show();
+                    } else {
+                        $(this).siblings(".invalid-feedback").hide();
+                    }
+                }
+                ).fail(err => console.log(err));
+            }
+        })
+            
+            
+    </script>
+
+
+}
+@section Styles{
+    <style>
+        #checkEye {
+            position: absolute;
+            top: 25%;
+            right: 30px;
+            transform: translateY(-50%);
+            color: rgb(109, 109, 109);
+        }
+        .invalid-feedback{
+            font-size: 0.8rem;
+            color: red;
+            display: none;
+        }
+    </style>
+}
+

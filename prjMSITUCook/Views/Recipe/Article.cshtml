@@ -1,0 +1,319 @@
+﻿@model prjMSITUCook.Models.VM.RecipeArticleVM
+@{
+    ViewData["Title"] = Model.RecipeName;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 d-img">
+            @{
+                if (!string.IsNullOrEmpty(Model.RecipeCover))                
+                {
+                    <img src="@Model.RecipeCover" alt="食譜圖">
+                }
+                else
+                {
+                    <img src="~/images/recipe/recipedefault.png" />
+                }
+                }
+            
+        </div>
+        <div class="col-6 d-intro">
+            <p class="time">@Model.PublishedTime.ToString("yyyy-MM-dd")</p>
+            <h2 class="title">@Model.RecipeName</h2>
+            <span class="count"><i class="fa-solid fa-heart"></i>   @Model.FavoriteNumber</span>
+            <span class="count"><i class="fa-sharp fa-solid fa-thumbs-up"></i>   @Model.Likes</span>
+            <span class="count"><i class="fa-solid fa-eye"></i>  @Model.Views</span>
+            <div class="author">
+                <a asp-controller="Recipe" asp-action="Member" asp-route-AuthorId="@Model.AuthorId">
+                    <img src="@(Model.ProfilePhoto)" alt="作者頭貼">
+                    <span class="name">@Model.NickName</span>
+                </a>
+                @{
+                    if (ViewBag.MemberId !=0)
+                    {
+                        if (Model.AuthorIsFollowed)
+                        {
+                            <button class="btn btn-outline-primary btn-follow">取消追蹤</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary btn-follow">追蹤</button>
+                        }
+
+                    } else
+                    {
+                        <button class="btn btn-primary" onclick="NotLogin()">追蹤</button>
+
+                    }
+                 }
+                
+            </div>
+            <p class="description">
+                @Model.ShortDescription
+            </p>
+            <div class="btns">
+                @{
+                    if (ViewBag.MemberId != 0)
+                    {
+                        if (Model.IsLiked)
+                        {
+                            <button class="btn btn-outline-primary btn-like"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>   取消讚</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary btn-like"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>   讚</button>
+                        }
+                    } else
+                    {
+                        <button class="btn btn-primary" onclick="NotLogin()"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>   讚</button>
+
+                    }
+
+                }
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9 d-content">
+            <div class="d-attribute d-flex justify-content-between">
+                <div class="flex-fill">
+                    <p class="label">份量</p>
+                    <p class="content">@(Model.Amount)人份</p>
+                </div>
+                <div class="flex-fill itme" style="border-left:1px solid #cbcbcb">
+                    <p class="label">時間</p>
+                    <p class="content">@(Model.CostMinutes)分鐘</p>
+                </div>
+            </div>
+            <hr>
+            <div class="d-step">
+                @{
+                    int count = 1;
+                    foreach (var i in Model.StepList)
+                    {
+                        if (string.IsNullOrEmpty(i.StepPicture))
+                        {
+                            <div class="item d-flex align-items-start">
+                                <h1 class="number">@count</h1>
+                                <p class="description">@i.StepDescription</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item d-flex align-items-start">
+                                <h1 class="number">@count</h1>
+                                <img src="@i.StepPicture" alt="步驟圖">
+                                <p class="description">@i.StepDescription</p>
+                            </div>
+                        }
+
+                        count++;
+                    }
+                }
+
+            </div>
+            <hr>
+            <div class="btns d-flex">
+                <button class="btn btn-outline-primary flex-fill btn-favorite"><i class="fa-solid fa-heart"></i>   收藏</button>
+                @{
+                    if (ViewBag.MemberId != 0)
+                    {
+                        if (Model.IsLiked)
+                        {
+                            <button class="btn btn-outline-primary btn-like flex-fill"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>   取消讚</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary btn-like flex-fill"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>   讚</button>
+                        }
+
+                    } else
+                    {
+                        <button class="btn btn-primary flex-fill" onclick="NotLogin()"> <i class="fa-sharp fa-solid fa-thumbs-up"></i>   讚</button>
+
+                    }
+                }
+            </div>
+            <div class="d-author d-flex align-items-start">
+                <img src="@Model.ProfilePhoto" alt="作者頭貼">
+                <div>
+                    <h3 class="name"><a asp-controller="Recipe" asp-action="Member" asp-route-AuthorId="@Model.AuthorId">@Model.NickName</a></h3>
+                    @{
+                        if (ViewBag.MemberId != 0)
+                        {
+                            if (Model.AuthorIsFollowed)
+                            {
+                                <button class="btn btn-outline-primary btn-follow">取消追蹤</button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-primary btn-follow">追蹤</button>
+                            }
+
+                        } else
+                        {
+                            <button class="btn btn-primary" onclick="NotLogin()">追蹤</button>
+
+                        }
+
+                    }
+                    <p class="intro">@Model.SelfIntro</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h3 class="h-rectangle">食材</h3>
+            <table class="t-food">
+                <tbody>
+                    @{
+                        foreach (var i in Model.FoodList)
+                        {
+                            <tr>
+                                <td>@i.FoodName</td>
+                                <td>@i.FoodAmount</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <link href="~/css/recipe.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts{
+    <script>
+        //沒登入的情況點擊追蹤或按讚
+        function NotLogin(){
+            Swal.fire({
+                icon: 'error',
+                title: '登入後才能操作喔',
+                timer: 2500,
+                timerProgressBar: true,
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+            })
+        }
+        //點擊讚
+        $(".btn-like").click(function(){
+            const text = $(this).text().trim();
+            console.log(text)
+            if(text =="讚"){
+                LikePost()
+                SignalRForLikeAndFollow();
+            }
+            if(text =="取消讚"){
+                LikeDelete()
+                SignalRForUnfollowAndDislike()
+            }
+            
+        });
+
+        //在該頁面上對作者的任何按讚、取消追蹤都會觸發這個事件
+        function SignalRForLikeAndFollow(){
+            connection.invoke("IFollowOrLikeSomeone", '@Model.AuthorId').catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+        //在該頁面上對作者的任何取消按讚、取消追蹤都會觸發這個事件
+
+        function SignalRForUnfollowAndDislike() {
+            connection.invoke("IUnFollowOrCancelLikeSomeone", '@Model.AuthorId').catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+        const LikePostBody = {
+          "memberId": @ViewBag.MemberId,
+          "recipeId": @Model.RecipeId
+        };
+        async function LikePost(){
+            try{
+                const response = await fetch(`@ViewBag.ApiHost`+`/Like`, {
+                    method: "POST",
+                    body: JSON.stringify(LikePostBody),
+                    headers: {
+                        'Accept': "application/json, text/plain, */*",
+                        'Content-Type': "application/json;charset=utf-8"
+                    },
+                });
+                $(".btn-like").toggleClass("btn-outline-primary");
+                $(".btn-like").toggleClass("btn-primary");
+                $(".btn-like").html(`<i class="fa-sharp fa-solid fa-thumbs-up"></i>   取消讚`)
+            }catch(error){
+                return;
+            }
+        }
+
+        async function LikeDelete(){
+            try {
+                const response = await fetch(`@ViewBag.ApiHost` + "/Like/?MemberId=@(ViewBag.MemberId)&RecipeId=@Model.RecipeId", {
+                    method: "DELETE",
+                    //別忘了把主體参數轉成字串，否則資料會變成[object Object]，它無法被成功儲存在後台
+                });
+                $(".btn-like").toggleClass("btn-outline-primary");
+                $(".btn-like").toggleClass("btn-primary");
+                $(".btn-like").html(`<i class="fa-sharp fa-solid fa-thumbs-up"></i>   讚`)
+            } catch (error) {
+                return;
+            }
+        }
+        //追蹤
+        $(".btn-follow").click(function () {
+            const text = $(this).text().trim();
+            console.log(text)
+            if (text == "追蹤") {
+                FollowPost();
+                SignalRForLikeAndFollow();
+
+            }
+            if (text == "取消追蹤") {
+                FollowDelete();
+                SignalRForUnfollowAndDislike();
+            }
+            
+
+        });
+        const FollowPostBody = { "whoFollow": @ViewBag.MemberId, "followWhom": @Model.AuthorId};
+
+        async function FollowPost(){
+            try{
+                const response = await fetch(`@ViewBag.ApiHost`+`/Follow`, {
+                method:'POST',
+                body: JSON.stringify(FollowPostBody),
+                headers: new Headers({
+                        'accept': '*/*',
+                        'Content-Type': 'application/json'
+                    }),
+            });
+            $(".btn-follow").toggleClass("btn-outline-primary");
+            $(".btn-follow").toggleClass("btn-primary");
+            $(".btn-follow").html(`取消追蹤`)
+            }catch(error){
+                return;
+            }
+        }
+        async function FollowDelete() {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost` + '/Follow/?WhoFollow=@(ViewBag.MemberId)&FollowWhom=@Model.AuthorId', {
+                    method: 'Delete',
+                });
+                $(".btn-follow").toggleClass("btn-outline-primary");
+                $(".btn-follow").toggleClass("btn-primary");
+                $(".btn-follow").html(`追蹤`)
+
+            } catch (error) {
+                return;
+            }
+        }
+    </script>
+}
+
+
+

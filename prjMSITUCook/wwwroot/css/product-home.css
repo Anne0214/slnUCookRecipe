@@ -1,0 +1,41 @@
+
+  /* 自定义Carousel容器大小，可以根据实际需求调整 */
+  .carousel-inner {
+    max-width: 600px; /* 设置Carousel容器最大宽度 */
+    margin: 0 auto; /* 水平居中 */
+  }
+  
+  /* 自定义图片大小，可以根据实际需求调整 */
+  .carousel-item img {
+    max-width: 100%; /* 图片最大宽度为容器宽度 */
+    height: auto; /* 高度自适应，保持原始比例 */
+  }
+
+  .carousel-inner img {
+    width: 1500px !important; /* 设置图片宽度为2000像素，并强制覆盖默认样式 */
+    height: auto; /* 高度自适应，保持原始比例 */
+    object-fit: cover; /* 等比例缩放并裁剪以适应尺寸 */
+  }
+
+
+  .carousel-inner {
+    max-width: 1500px; /* 设置Carousel容器的最大宽度为2000像素 */
+    margin: 0 auto; /* 水平居中 */
+  }
+
+  .category{
+    width: 8rem; 
+    display: block; 
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  .category img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .row a {
+    margin-right: 10px;
+  }
+

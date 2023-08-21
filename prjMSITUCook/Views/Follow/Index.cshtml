@@ -1,0 +1,226 @@
+﻿
+@{
+    ViewData["Title"] = "我的追蹤";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-2 sidebar">
+            <ul class="list-unstyled sidebar-list">
+                @{
+                    if (ViewBag.Section == "content")
+                    {
+                        @:<li class="active">
+                    }else{
+                        @:<li class="hover">
+                    }
+                }
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>追蹤動態</span>
+                </li>
+                @{
+                    if (ViewBag.Section == "follow")
+                    {
+                        @:<li class="active">
+                    }else{
+                        @:<li class="hover">
+                    }
+                }
+                    <i class=" fa-solid fa-user-group"></i>
+                    <span>我的追蹤</span>
+                    <span class="num">@ViewBag.FollowCount</span>
+                </li>
+                @{
+                    if (ViewBag.Section == "fan")
+                    {
+                        @:<li class="active">
+                    }else{
+                        @:<li class="hover">
+                    }
+                }
+                    <i class="fa-solid fa-user-check"></i>
+                    <span>我的粉絲</span>
+                    <span class="num">@ViewBag.FanCount</span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <div id="d-follow-content">
+                @*放_SmallRecipeListPartialView*@
+            </div>
+            <div id="d-follow-list">
+                @*放_AuthorListPartialView*@
+            </div>
+            <div id="d-fan-list">
+                @*放_AuthorListPartialView*@
+            </div>
+            <div class="justify-content-center align-items-center" id="loading" style="height:100%;">
+                <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="/css/follow-list.css" asp-append-version="true">
+}
+
+@section Scripts{
+
+    <script>
+        //網頁一開始載入，確定是哪個section是active
+        const section = $(".sidebar-list").children(".active").text().trim().substring(0,4)
+
+        if(section =='追蹤動態'){
+                GetFollowContent()
+        }else if(section =='我的追蹤'){
+                GetFollowList()
+        }else{
+                GetFanList()
+
+        }
+        //內容切換
+        $(".sidebar li").click(function () {
+
+            if ($(this).text().indexOf('追蹤動態') >= 0) {
+                GetFollowContent()
+            }
+            if ($(this).text().indexOf('我的粉絲') >= 0) {
+                GetFanList()
+            }
+            if ($(this).text().indexOf('我的追蹤') >= 0) {
+                GetFollowList()
+            }
+        });
+
+
+        //sidebar的樣式切換
+        $(".sidebar-list li").click(function () {
+            $(this).addClass("active").removeClass("hover").siblings().removeClass("active").addClass("hover");
+        });
+
+        function GetFollowContent(){
+            $("#loading").addClass("active").siblings().removeClass("active");
+            const uri = "@Url.Content("~/Recipe/_SmallRecipeListPartialView")"+`/?id=@(ViewBag.MemberId)`;
+            $.ajax({
+                url: uri,
+                type: "GET",
+                success: (result) => { 
+                    $("#d-follow-content").html(result);
+                    $("#d-follow-content").addClass("active").siblings().removeClass("active");
+},
+                error: (error) => { Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '加載失敗',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                }) }
+            })
+        }
+        function GetFanList(){
+            $("#loading").addClass("active").siblings().removeClass("active");
+            const uri = "@Url.Content("~/Recipe/_AuthorListPartialView")" + `/?WhoseFan=@(ViewBag.MemberId)`
+            $.ajax({
+                url: uri,
+                type: "GET",
+                success: (result) => { 
+                    $("#d-fan-list").html(result);
+                    $("#d-fan-list").addClass("active").siblings().removeClass("active");
+},
+                error: (error) => { Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '加載失敗',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                }) }
+            })
+        }
+        function GetFollowList(){
+            $("#loading").addClass("active").siblings().removeClass("active");
+            const uri = "@Url.Content("~/Recipe/_AuthorListPartialView")" + `/?FollowByWhom=@(ViewBag.MemberId)`
+            $.ajax({
+                url: uri,
+                type: "GET",
+                success: (data) => { 
+                    $("#d-follow-list").html(data);
+                    $("#d-follow-list").addClass("active").siblings().removeClass("active");},
+                error: (error) => { Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '加載失敗',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                }) }
+            })
+                            
+
+
+        }
+        //追蹤與取消追蹤按鈕
+
+        $(document).on('click',".btn-follow",function () {
+            const text = $(this).text().trim();
+            
+            const id = $(this).siblings("input").val()
+            if (text == "追蹤") {
+
+                const FollowPostBody = { "whoFollow": @ViewBag.MemberId, "followWhom": id };
+                FollowPost(FollowPostBody);
+                $(this).toggleClass("btn-outline-primary");
+                $(this).toggleClass("btn-primary");
+                $(this).html(`<i class="fa-solid fa-user-large-slash"></i> 取消追蹤`)
+                //signal r會發動的事件
+                connection.invoke("IFollowOrLikeSomeone", id.toString()).catch(function (err) {
+                return console.error(err.toString());
+            });
+            }
+            if (text == "取消追蹤") {
+                FollowDelete(id);
+                $(this).toggleClass("btn-outline-primary");
+                $(this).toggleClass("btn-primary");
+                $(this).html(`<i class="fa-solid fa-user-plus"></i> 追蹤`)
+                //signal r會發動的事件
+                connection.invoke("IUnFollowOrCancelLikeSomeone", id.toString()).catch(function (err) {
+                return console.error(err.toString());
+            });
+            }
+
+
+        });
+
+
+        async function FollowPost(FollowPostBody) {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost`+`/Follow`, {
+                    method: 'POST',
+                    body: JSON.stringify(FollowPostBody),
+                    headers: new Headers({
+                        'accept': '*/*',
+                        'Content-Type': 'application/json'
+                    }),
+                });
+            } catch (error) {
+                return;
+            }
+        }
+        async function FollowDelete(id) {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost` + `/Follow/?WhoFollow=@(ViewBag.MemberId)&FollowWhom=${id}`, {
+                    method: 'Delete',
+                });
+
+            } catch (error) {
+                return;
+            }
+        }
+
+    </script>
+}

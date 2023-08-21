@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "歡迎加入";
+}
+
+<div style="margin:30px 40px;">
+    <div class="row">
+
+        <div class="col-5 d-flex align-items-center justify-content-center">
+            <div>
+                <h1 style="color:#ff6000">註冊成功</h1>
+                <h2>UCook歡迎你!</h2>
+                <p>在這裡你可以.....</p>
+                <ul style="line-height:2rem;">
+                    <li>找到新奇有趣的食譜</li>
+                    <li>與志同道合的夥伴交流</li>
+                    <li>買到好用的廚具，煮菜更得心應手</li>
+                </ul>
+                <button class="btn btn-primary"><a asp-controller="home" asp-action="login">開始旅程</a></button>
+            </div>
+        </div>
+        <div class="col-6">
+            <img src="~/images/register/registersuccess.png" style="width:100%;" />
+        </div>
+    </div>
+</div>
+

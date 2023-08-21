@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewData["Title"] = "搜尋作者結果";
+}
+@using System.Text
+@model prjMSITUCook.Models.VM.RecipeSearchAuthorResultVM
+
+<div class="container">
+    @await Html.PartialAsync("_RecipeSearchInputPartialView")
+    <div class="row">
+        <div class="col">
+            <h4>
+                <i class="fa-solid fa-magnifying-glass"></i> 搜尋「<span class="keyword">@Model.AuthorName</span>」，@(Model.AuthorCount) 位作者符合
+            </h4>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            @await Html.PartialAsync("_AuthorListPartialView", Model)
+        </div>
+    </div>
+    
+
+
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="/css/search-recipe.css">
+    <link rel="stylesheet" href="/css/follow-list.css">
+}
+
+@section Scripts{
+    <script src="/js/search-input.js"></script>
+    <script src="/js/follow-list.js"></script>
+    <script>
+        //沒登入的情況點擊追蹤或按讚
+        function NotLogin() {
+            Swal.fire({
+                icon: 'error',
+                title: '登入後才能操作喔',
+                timer: 2500,
+                timerProgressBar: true,
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+            })
+        }
+
+        //追蹤
+        $(".btn-follow").click(function () {
+            const text = $(this).text().trim();
+            const id = $(this).siblings("input").val()
+            if (text == "追蹤") {
+
+                const FollowPostBody = { "whoFollow": @(ViewBag.MemberId), "followWhom": id };
+                FollowPost(FollowPostBody);
+                $(this).toggleClass("btn-outline-primary");
+                $(this).toggleClass("btn-primary");
+                $(this).html(`<i class="fa-solid fa-user-large-slash"></i> 取消追蹤`)
+                //signal r會發動的事件
+                connection.invoke("IFollowOrLikeSomeone", id.toString()).catch(function (err) {
+                    return console.error(err.toString());
+                });
+            }
+            if (text == "取消追蹤") {
+                FollowDelete(id);
+                $(this).toggleClass("btn-outline-primary");
+                $(this).toggleClass("btn-primary");
+                $(this).html(`<i class="fa-solid fa-user-plus"></i> 追蹤`)
+                connection.invoke("IUnFollowOrCancelLikeSomeone", id.toString()).catch(function (err) {
+                    return console.error(err.toString());
+                });
+            }
+            
+        });
+
+
+        async function FollowPost(FollowPostBody) {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost`+`/Follow`, {
+                    method: 'POST',
+                    body: JSON.stringify(FollowPostBody),
+                    headers: new Headers({
+                        'accept': '*/*',
+                        'Content-Type': 'application/json'
+                    }),
+                });
+            } catch (error) {
+                return;
+            }
+        }
+        async function FollowDelete(id) {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost` + `/Follow/?WhoFollow=@(ViewBag.MemberId)&FollowWhom=${id}`, {
+                    method: 'Delete',
+                });
+
+            } catch (error) {
+                return;
+            }
+        }
+
+
+    </script>
+
+}
+
+

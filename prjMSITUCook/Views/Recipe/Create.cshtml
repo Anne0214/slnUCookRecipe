@@ -1,0 +1,312 @@
+﻿@model prjMSITUCook.Models.Parameter.RecipeCreateParameter
+@{
+    ViewData["Title"] = "寫食譜";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <ul class="list-unstyled" id="sidebar">
+                <li>
+                    <a href="#basic"><i class="fa-solid fa-note-sticky" style="margin-right:10px;"></i>基本資料</a>
+                </li>
+                <li>
+                    <a href="#step"><i class="fa-solid fa-utensils" style="margin-right:10px;"></i>步驟</a>
+                </li>
+                <li>
+                    <a href="#food"><i class="fa-solid fa-bowl-food" style="margin-right:10px;"></i>食材</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <form method="post" class="needs-validation" novalidate asp-controller="Recipe" asp-action="Create" name="CreateRicipeForm" id="CreateRicipeForm" enctype="multipart/form-data">
+                <div class="section" id="basic">
+                    <div class="title">
+                        <h4><i class="fa-solid fa-note-sticky"></i> 基本資料</h4>
+                    </div>
+                    <div class="content row">
+                        <input type="text" asp-for="AuthorId" hidden value="@ViewBag.MemberId">
+                        <div class="col-12">
+                            <label for="RecipeName" class="form-label">請輸入食譜名稱</label>
+                            <input type="text" class="form-control" asp-for="RecipeName"  maxlength="20" minlength="3" required>
+                            <div class="invalid-feedback">請至少輸入3個字做為標題</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="RecipeCoverFile" class="form-label">食譜封面照</label><br>
+                            <img style="width:400px;height:300px;object-fit:cover;border-radius:8px;" src="/Images/recipe/UploadImage2.png" alt="上傳放置處" id="preview-cover">
+                            <input type="file" asp-for="RecipeCoverFile" class="form-control" accept="image/png, image/x-png, image/jpeg, image/pjpeg">
+                        </div>
+                        <div class="col-12">
+                            <label for="ShortDescription" class="form-label">簡短說明</label>
+                            <button class="btn btn-outline-primary" id="btn-AiSuggest" type="button">AI自動生成</button>
+                            <textarea asp-for="ShortDescription" cols="30" rows="10 " maxlength="150" minlength="15" class="form-control" required></textarea>
+                            <div class="invalid-feedback">請至少輸入15字食譜說明</div>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="CostMinutes" class="form-label">花費時間</label>
+                            <select class="form-select" selected asp-for="CostMinutes">
+                                <option value="5">5分鐘</option>
+                                <option value="10">10分鐘</option>
+                                <option value="15">15分鐘</option>
+                                <option value="20">20分鐘</option>
+                                <option value="30">30分鐘</option>
+                                <option value="45">45分鐘</option>
+                                <option value="60">60分鐘</option>
+                                <option value="90">90分鐘</option>
+                                <option value="120">120分鐘</option>
+                                <option value="180+">180+分鐘</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="Amount" class="form-label">份量</label>
+                            <select class="form-select" required asp-for="Amount">
+                                <option value="1">1人</option>
+                                <option value="2">2人</option>
+                                <option value="3">3人</option>
+                                <option value="4">4人</option>
+                                <option value="5">5人</option>
+                                <option value="6">6人</option>
+                                <option value="7">7人</option>
+                                <option value="8">8人</option>
+                                <option value="9">9人</option>
+                                <option value="10">10+人</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="section" id="step">
+                    <div class="title">
+                        <h4><i class="fa-solid fa-utensils"></i> 步驟</h4>
+                    </div>
+                    <div class="content row">
+                        <div id="steps">
+                            <div class="step d-flex align-items-center">
+                                <div style="width:200px;">
+                                    <img src="/Images/recipe/UploadImage.png" style="width:200px;height:150px;object-fit:cover;border-radius:5px;" id="preview-step0" alt="步驟預覽圖">
+                                    <input type="file" class="form-control" accept="image/png, image/x-png, image/jpeg, image/pjpeg" id="StepList[0].StepPictureFile" name="StepList[0].StepPictureFile">
+                                </div>
+                                <div style="position:relative;" class="flex-fill">
+                                    <span class="number">1</span>
+                                    <span class="btns">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        <i class="fa-solid fa-plus"></i>
+                                    </span>
+                                    <textarea id="StepList[0].StepDescription" name="StepList[0].StepDescription" maxlength="200" minlength="5" class="form-control" rows="4" placeholder="請輸入步驟說明" required></textarea>
+                                    <div class="invalid-feedback">請至少輸入5字步驟說明</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary" id="addStep" type="button">新增步驟</button>
+                    </div>
+                </div>
+                <div class="section" id="food">
+                    <div class="title">
+                        <h4><i class="fa-solid fa-egg"></i>食材</h4>
+                    </div>
+                    <div class="content">
+                        <div class="foods">
+                            <div class="food row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="名稱"  asp-for="FoodList[0].FoodName" required>
+                                    <div class="invalid-feedback">請輸入食材名稱</div>
+                                </div>
+                                <div class="col-5">
+                                    <input type="text" class="form-control" placeholder="份量" asp-for="FoodList[0].FoodAmount" required>
+                                    <div class="invalid-feedback">請輸入份量。如 : 一匙、適量</div>
+                                </div>
+                                <div style="font-size: 1.3rem; cursor: pointer;" class="col-1">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button style="margin-top:20px;" class="btn btn-outline-primary col-12" id="addFood" type="button">新增食材</button>
+                    </div>
+
+                </div>
+                <input type="checkbox" class="form-check-input" name="agree">
+                <label for="for" class="form-check-label">發布食譜即代表同意UCook的「服務條款」</label>
+                <div class="btns">
+                    <button class="btn btn-outline-secondary" id="btnDiscard"> 捨棄</button>
+                    <input type="reset" value="清空" class="btn btn-outline-primary">
+                    <input class="btn btn-primary" id="btnSubmit" type="submit" value="提交">
+                    @*<button class="btn btn-primary" id="btnSubmit" type="submit">提交</button>*@
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/create-recipe.css">
+
+}
+@section Scripts{
+    <script src="~/js/create-recipe.js" asp-append-version="true"></script>
+    <script>
+        //點擊提交後
+        $("form").submit((e) => {
+            e.preventDefault();
+            //2.按鈕disabled、變loading
+            $("#btnSubmit").attr("disabled", "diabled")
+            $("#btnSubmit").val("上傳中")
+            $.busyLoadFull("show");
+            //3.打post
+            const formData = new FormData(document.CreateRicipeForm);
+            SubmitRecipe(formData);
+        })
+        async function SubmitRecipe(f){
+            try{
+                const response = await fetch('@Url.Content("~/Recipe/Create")', {
+                    body: f,
+                    method: 'POST'});
+                
+                $.busyLoadFull("hide");
+                const statusCode =await response.status;
+                if(statusCode==200){
+                    Swal.fire({
+                        icon: 'success',
+                        title: '上傳成功',
+                        confirmButtonColor: '#FF6000',
+                        timer: 2000,
+                        timerProgressBar: true
+                    }).then(function () { //跳轉
+                        window.location.href = `@Url.Content("~/Recipe/MyPage/?SortMode=PublishedTimeDesc")`;
+                    })
+                    return;
+                }
+                $.busyLoadFull("hide");
+                Swal.fire({
+                    icon: 'error',
+                    title: '嗚嗚提交失敗',
+                    text: '請稍後再試',
+                    confirmButtonColor: '#FF6000',
+                    timer: 2000,
+                    timerProgressBar: true
+                })
+                //按鈕恢復原狀
+                $("#btnSubmit").val("提交")
+                $('#btnSubmit').removeAttr("disabled");
+
+
+            } catch(error) {  
+                //失敗
+                $.busyLoadFull("hide");
+                Swal.fire({
+                    icon: 'error',
+                    title: '嗚嗚提交失敗',
+                    text: '請稍後再試',
+                    confirmButtonColor: '#FF6000',
+                    timer: 2000,
+                    timerProgressBar: true
+                })
+                //按鈕恢復原狀
+                $("#btnSubmit").attr("提交");
+                $('#btnSubmit').removeAttr("disabled");
+            }
+        }
+        //點擊捨棄
+        $("#btnDiscard").click((e) => {
+            e.preventDefault();
+            Swal.fire({
+                icon: `warning`,
+                title: '確定要放棄已經寫的內容嗎?',
+                showCancelButton: true,
+                confirmButtonText: '放棄',
+                confirmButtonColor: '#FF6000',
+                cancelButtonText: '取消'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `@Url.Content("~/Recipe/MyPage/?SortMode=PublishedTimeDesc")`;
+                }})
+        })
+
+
+
+    </script>
+    <script>
+        //按鈕，點擊跳alert
+
+        $("#btn-AiSuggest").click(function(e){
+            e.preventDefault();
+            ShowInput();
+            
+        })
+        
+        async function GetSuggestIntro(f){
+            const response = await fetch('@Url.Content("~/recipe/GetShortIntroSuggest")',{
+                body:f,
+                method:'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const status = await response.status
+
+            if(status==200){
+                const content =await response.text()
+                $("#ShortDescription").text(content)
+            }
+        }
+
+        async function ShowInput(){
+            const { value: formValues } = await Swal.fire({
+                title: '輸入簡短說明想要有的重點',
+                html:
+                    '<input id="swal-input1" class="swal2-input">' +
+                    '<input id="swal-input2" class="swal2-input">' +
+                    '<input id="swal-input3" class="swal2-input">',
+                focusConfirm: false,
+                preConfirm: () => {
+                    return [
+                        document.getElementById('swal-input1').value,
+                        document.getElementById('swal-input2').value,
+                        document.getElementById('swal-input3').value
+                    ]
+                }
+            })
+
+            if (formValues) {
+
+                $("#ShortDescription").text("內容生成中...")
+                //組成body
+                let bodyObject = { instruct: formValues }
+                let body = JSON.stringify(bodyObject);
+                GetSuggestIntro(body)
+            }
+        }
+
+        
+    </script>
+
+    <script>
+        //文章資料填入
+        $("#FillInData").click(function(){
+            $("#RecipeName").val("彗星炒飯").change();
+            $("#CostMinutes>option[value='45']").attr("selected","selected").change();
+            $("#Amount>option[value='10']").attr("selected","selected").change();
+
+            document.getElementById("StepList[0].StepDescription").innerText = "使用蔬菜、隔夜飯炒飯"
+            document.getElementById("StepList[1].StepDescription").innerText = "準備投石機"
+            document.getElementById("StepList[2].StepDescription").innerText = "使用投石機把炒飯彈射到盤子上，模擬彗星，這樣炒飯會吸收太陽光，米飯會更加酥鬆"
+            document.getElementById("StepList[3].StepDescription").innerText = "完成"
+
+
+            $("#FoodList_0__FoodName").val("綠色、黃色蔬菜").change();
+            $("#FoodList_0__FoodAmount").val("3公斤").change();
+
+            
+            document.getElementById("FoodList[1].FoodName").value = "隔夜飯"
+            document.getElementById("FoodList[1].FoodAmount").value="30公斤"
+
+            document.getElementById("FoodList[2].FoodName").value="鹽巴"
+            document.getElementById("FoodList[2].FoodAmount").value="適量"
+
+            document.getElementById("FoodList[3].FoodName").value = "投石機"
+            document.getElementById("FoodList[3].FoodAmount").value = "一台"
+        })
+    </script>
+}
+

@@ -1,0 +1,170 @@
+﻿@model prjMSITUCook.Models.VM.RecipeMemberVM
+@{
+    ViewData["Title"] = Model.NickName+"的食譜";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-start">
+        <div>
+            <img class="profile" src="@Model.ProfilePhoto" alt="作者頭貼">
+        </div>
+        <div class="header">
+            <div class="d-flex align-items-center">
+                <span class="name">@Model.NickName</span>
+                @{
+                    if (ViewBag.MemberId !=0)
+                    {
+                        if (Model.AuthorIsFollowed)
+                        {
+                            <button class="btn btn-outline-primary btn-follow"> 取消追蹤</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary btn-follow"> 追蹤</button>
+
+                        }
+
+
+                    } else
+                    {
+                        <button class="btn btn-primary" onclick="NotLogin()"> 追蹤</button>
+
+                    }
+
+
+                    }
+                
+            </div>
+            <div>
+                <span><span style="font-size:1.3rem;">@Model.RecipeCount</span>食譜</span>
+                <span><span style="font-size:1.3rem;">@Model.FanCount</span>粉絲</span>
+                <span><span style="font-size:1.3rem;">@Model.FollowCount</span>追蹤</span>
+            </div>
+            <p class="self-intro">
+                @Model.ShortIntro
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="d-result">
+        @await Html.PartialAsync("_RecipeListPartialView", Model)
+    </div>
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/personal-page.css">
+    <link rel="stylesheet" href="~/css/recipe-list.css">
+}
+
+@section Scripts{
+    <script>
+        //沒登入的情況點擊追蹤或按讚
+        function NotLogin() {
+            Swal.fire({
+                icon: 'error',
+                title: '登入後才能操作喔',
+                timer: 2500,
+                timerProgressBar: true,
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+            })
+        }
+
+        //得到當前搜尋的參數
+        var queryStr = location.search.split("?")[1];
+
+        var arr = queryStr.split("&");
+
+        var parameter = {}
+
+        for (var i = 0; i < arr.length; i++) {
+            var g = arr[i].split("=");
+            parameter[g[0]] = g[1]
+        }
+        console.log(parameter)
+
+        //刷新程序
+        function RefreshByOrder() {
+
+            const SortMode = $("#order").val();
+            const uri = "@Url.Content("~/Recipe/_RecipeListPartialView")" + `/?AuthorId=${parameter["AuthorId"]}&page=1&sortmode=${SortMode}&PageIndex=1`
+            $.ajax({
+                url: uri,
+                type: "GET",
+                success: (data) => { $("#d-result").html(data); },
+                error: (error) => { alert("加載失敗") }
+            })
+        }
+
+        //改select的order觸發刷新，此處要用動態繫結，因為select在partial view那裏
+        $(document).on("change", "#order", function () {
+            RefreshByOrder();
+
+        })
+        //追蹤
+        $(".btn-follow").click(function () {
+            const text = $(this).text().trim();
+            if (text == "追蹤") {
+                FollowPost();
+                SignalRForLikeAndFollow()
+            }
+            if (text == "取消追蹤") {
+                FollowDelete();
+                SignalRForUnfollowAndDislike()
+            }
+            
+        });
+        //signal r會發動的事件
+        function SignalRForLikeAndFollow() {
+            connection.invoke("IFollowOrLikeSomeone", '@Model.AuthorId').catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+        //在該頁面上對作者的任何取消按讚、取消追蹤都會觸發這個事件
+
+        function SignalRForUnfollowAndDislike() {
+            connection.invoke("IUnFollowOrCancelLikeSomeone", '@Model.AuthorId').catch(function (err) {
+                return console.error(err.toString());
+            });
+        }
+
+
+        const FollowPostBody = { "whoFollow": @ViewBag.MemberId, "followWhom": @Model.AuthorId};
+
+        async function FollowPost() {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost`+`/Follow`, {
+                    method: 'POST',
+                    body: JSON.stringify(FollowPostBody),
+                    headers: new Headers({
+                        'accept': '*/*',
+                        'Content-Type': 'application/json'
+                    }),
+                });
+                $(".btn-follow").toggleClass("btn-outline-primary");
+                $(".btn-follow").toggleClass("btn-primary");
+                $(".btn-follow").html(`取消追蹤`)
+            } catch (error) {
+                return;
+            }
+        }
+        async function FollowDelete() {
+            try {
+                const response = await fetch(`@ViewBag.ApiHost` + '/Follow/?WhoFollow=@ViewBag.MemberId&FollowWhom=@Model.AuthorId', {
+                    method: 'Delete',
+                });
+                $(".btn-follow").toggleClass("btn-outline-primary");
+                $(".btn-follow").toggleClass("btn-primary");
+                $(".btn-follow").html(`追蹤`)
+
+            } catch (error) {
+                return;
+            }
+        }
+
+
+    </script>
+}
+
+

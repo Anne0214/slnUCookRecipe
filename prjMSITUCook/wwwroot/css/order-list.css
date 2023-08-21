@@ -1,0 +1,30 @@
+﻿.nav-label {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.expired-label {
+    background-color: red;
+    color: white;
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.coupons-container {
+    display: grid;
+
+    /*grid-template-columns 屬性指定每列的寬度*/
+
+    /*repeat(auto-fill, minmax(20rem, 1fr)) 
+        表示重複創建自適應列（auto-fill）直到容器寬度不足以
+        容納最小寬度（20rem）為止。1fr 表示每列寬度的最大值
+        為 1 份（fraction），這樣可以讓所有的列等寬排列，並自適應調整列數*/
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+
+    /*grid-gap 屬性用於設定行和列之間的間距*/
+    grid-gap: 10px;
+}
+

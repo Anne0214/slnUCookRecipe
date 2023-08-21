@@ -1,0 +1,62 @@
+﻿.backgroudGradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -99;
+    background-image: linear-gradient(to top, #fffaed 0%, white 100%);
+}
+
+.d-foodPriceList > .item {
+    padding: 20px 40px;
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    border-radius: 20px;
+    height: 300px;
+    box-shadow: #e9e9e9 0px 6px 15px 1px;
+    margin-bottom: 30px;
+    background-color: rgb(255 255 255 / 92%);
+}
+
+.d-foodPriceList > .item > .title {
+    width: 300px;
+}
+.d-foodPriceList > .item > .title > h2 {
+    line-height: 118px;
+    font-family: 'Noto Sans TC';
+    font-weight: 400;
+}
+.d-foodPriceList > .item > .markets > .market {
+    width: 220px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.d-foodPriceList > .item >.markets> .market > .title {
+    border-radius: 14px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+.d-foodPriceList > .item >.markets> .market > .price {
+    font-size: 2rem;
+    font-family: 'Bricolage Grotesque';
+    font-weight: 600;
+    line-height: 4rem;
+    color: #747474;
+}
+.d-foodPriceList > .item > .markets > .market > .unit {
+    font-size: 0.8rem;
+    color: #747474;
+}
+.title.yellow {
+    color: #746814;
+    background-color: #fbf8cc;
+}
+.title.green {
+    color: #147456;
+    background-color: #ccfbe7;
+}
+
+
+

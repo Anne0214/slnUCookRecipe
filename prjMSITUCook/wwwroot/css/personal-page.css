@@ -1,0 +1,33 @@
+@import url('color.css');
+.profile {
+    border-radius: 50%;
+    width: 100px;
+    height:100px;
+    object-fit:cover;
+}
+
+.header {
+    width: 600px;
+    margin: 0 60px;
+}
+
+.header>div {
+    margin: 10px 0;
+}
+
+.header>div>* {
+    margin: 0 6px;
+}
+
+.header .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.header .self-intro {
+    line-height: 1.7rem;
+}
+
+.header .btn-follow {
+    padding: 3px 16px;
+}

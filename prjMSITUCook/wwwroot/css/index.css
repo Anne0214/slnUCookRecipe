@@ -1,0 +1,124 @@
+@import url('color.css');
+
+.d-decoration {
+    position: relative;
+    text-align:center;
+}
+
+.d-decoration img {
+    width: 500px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.d-decoration .description {
+    position: absolute;
+    bottom: 30px;
+    left: 100px;
+    color: #fff;
+}
+
+.d-decoration .description button {
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    background-color: var(--orange);
+    border: none;
+}
+
+.section {
+    margin: 60px 0px;
+}
+
+.d-index-box-recipe > .content >a> .item {
+    width:200px;
+}
+.d-index-box-recipe > .content >a> .item > img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+.d-index-box-recipe > .content >a> .item > * {
+    margin-top:10px;
+}
+.d-index-box-recipe > .content >a> .item > .title {
+    font-weight:600;
+}
+.d-index-box-recipe > .content >a> .item > .author {
+    position:relative;
+}
+.d-index-box-recipe > .content >a> .item > .author > .authorPic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+}
+.d-index-box-recipe > .content >a> .item > .author >.detail {
+    font-size:0.9rem;
+    padding:0;
+}
+.d-index-box-recipe > .content >a> .item > .author > .detail>p {
+    padding:0;
+    margin:0;
+}
+.d-index-box-recipe > .content >a> .item > .author > .like-container {
+    position:absolute;
+    right:0;
+}
+.d-index-box-recipe > .content >a> .item > .author > .like-container > p {
+    text-align: right;
+    font-size:0.9rem;
+}
+.d-index-box-product > .content > a>.item > * {
+margin-top:10px;
+}
+.d-index-box-product > .content > a>.item {
+    border: 1px solid var(--gray);
+    border-radius: 16px;
+    padding: 10px;
+    width: 220px;
+}
+.d-index-box-product > .content >a> .item > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+    .d-index-box-product > .content > a > .item > .title {
+        font-weight: 600;
+        height: 40px;
+        overflow: hidden;
+    }
+    .d-index-box-product > .content >a> .item > .tag-price {
+        text-decoration:line-through;
+        font-size:0.9rem;
+
+    }
+    .d-index-box-product > .content >a> .item > .sale-price {
+        color:var(--orange);
+        font-size: 1.2rem;
+        font-weight:600;
+    }
+    .d-index-box-product > .content >a> .item > .product-btn {
+        text-align:right;
+    }
+.d-index-box-product > .content >a> .item > .product-btn > button {
+            font-size: 0.9rem;
+            background-color: var(--light);
+            color: var(--orange);
+            padding: 5px 10px;
+            /* height: 20px; */
+            border-radius: 14px;
+ }
+
+.content > a>.item {
+    display:inline-block;
+
+}
+
+
+
+
+

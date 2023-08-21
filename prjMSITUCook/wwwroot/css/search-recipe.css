@@ -1,0 +1,15 @@
+@import url('color.css');
+.keyword {
+    color: var(--orange);
+}
+
+.btn-advanced-search {
+    background-color: #fff;
+    color: var(--dark);
+    font-size: 1rem;
+    border: none;
+}
+
+#search-input {
+    margin-bottom: 5px;
+}

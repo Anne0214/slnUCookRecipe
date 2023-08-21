@@ -1,0 +1,447 @@
+/* ###變數宣告### */
+@import url('color.css');
+
+/* ###網頁整體基底設定### */
+    
+html {
+   font-size: 16px;
+}
+
+.font-sub-content {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Noto Sans TC',system-ui, -apple-system,sans-serif;
+    /*    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+*/ color: var(--dark);
+}
+    
+    a {
+        color: inherit;
+        /* 移除超連結顏色 */
+        text-decoration: none;
+        /* 移除超連結底線 */
+    }
+    
+    .container {
+        margin-top: 30px;
+    }
+    /* ###共用樣式調整### */
+    
+    .pagination,
+    .page-item,
+    .page-link,
+    .page-link:active,
+    .page-link:hover,
+    .page-link:active:hover {
+        color: var(--orange);
+    }
+.pagination {
+    --bs-pagination-active-bg:var(--orange);
+    --bs-pagination-active-border-color:var(--orange);
+}
+
+        .box-orange {
+            border: 1px solid var(--orange);
+            padding: 0;
+            border-radius: 5px;
+            margin: 0px 10px 20px 10px;
+        }
+    
+    .box-orange-header {
+        margin: 0;
+        background: var(--orange);
+        color: #fff;
+        font-size: 1.4rem;
+        padding: 3px;
+    }
+    
+    .box-content {
+        margin: 10px 20px 10px 20px;
+    }
+    
+    .box-median {
+        border: 1px solid var(--median);
+        padding: 0;
+        border-radius: 5px;
+        margin: 0px 10px 20px 10px;
+    }
+    
+    .box-median-header {
+        margin: 0;
+        background: var(--median);
+        color: #fff;
+        font-size: 1.4rem;
+        padding: 3px;
+    }
+    
+    .btn-primary,
+    .btn-primary[disabled] {
+        background-color: var(--orange);
+        border-color: var(--orange);
+    }
+    
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active:hover {
+        background-color: var(--median);
+        border-color: var(--median);
+    }
+    
+    .btn-outline-primary,
+    .btn-outline-primary[disabled] {
+        border-color: var(--orange);
+        color: var(--orange);
+    }
+    
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active:hover {
+        border-color: var(--orange);
+        background-color: var(--median) !important;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+        line-height: 1.5;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+        line-height: 1.5;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    h3 {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    h4 {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+h5 {
+    font-size:1rem;
+    font-weight:700;
+}
+    p {
+        line-height: 1.5;
+        margin-bottom: 5px;
+    }
+    
+    .p-secondary {
+        color: var(--dark-gray);
+        margin-bottom: 5px;
+        line-height: 1.5;
+    }
+    
+    .link {
+        text-decoration: underline;
+    }
+    
+    .h-underline {
+        border-bottom: 1px solid var(--orange);
+        display: inline-block;
+    }
+    
+    .h-rectangle::before {
+        content: " ";
+        display: block;
+        width: 6px;
+        position: absolute;
+        height: 2rem;
+        background-color: var(--orange);
+        transform: translate(-200%, 2px);
+    }
+    /* ###Nav bar### */
+    
+    nav a {
+        padding: 0px;
+    }
+    
+    nav>ul {
+        list-style: none;
+        /* 移除項目符號 */
+        margin: 0;
+        padding: 0;
+    }
+    
+    nav {
+        display: block;
+        width: 100%;
+    }
+    /* ###Nav bar - 中間主頁面連結### */
+    
+    .nav-menu {
+        height: 50px;
+    }
+    
+    .nav-menu>li {
+        /* font-weight: 600; */
+        margin: 0;
+        border-bottom: 2px solid #fff;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .nav-menu>li a {
+        margin: 0;
+        display: block;
+        line-height: 50px;
+    }
+    
+    .nav-menu>li:hover {
+        background-color: var(--gray);
+        transition-duration: 200ms;
+        border-bottom: 3px solid var(--orange);
+        transition-timing-function: ease-out;
+    }
+    /* ###Nav bar - 右側會員區### */
+    
+    .nav-member {
+        margin-right: 10px;
+    }
+    
+    .nav-member>li {
+        margin-left: 20px;
+    }
+    
+    .nav-member>li a:hover {
+        color: var(--orange);
+        transition-duration: 400ms;
+        transition-timing-function: ease-out;
+    }
+
+.badge-with-number {
+    border-radius: 100%;
+    position: absolute;
+    top: -10px;
+    right: -15px;
+    color: #fff;
+    background-color: red;
+    padding: 9px;
+    font-size: 12px;
+}
+    /* ###Nav bar - 暱稱dropdown menu### */
+    
+    .nav-memeber-menu {
+        padding: 10px;
+    }
+    
+    .nav-memeber-menu>li {
+        padding: 5px;
+        font-size: 14px;
+        text-align: center;
+        margin: 5px;
+    }
+    
+    .nav-memeber-menu>li:hover {
+        color: var(--orange);
+    }
+    /* ###Nav bar - 購物車dropdown menu### */
+    
+    .nav-cart-menu {
+        width: 400px;
+        padding: 20px 0 0 0;
+        height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-bottom:20px;
+    }
+    /* 捲軸底色  */
+
+
+
+.nav-cart-menu::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+    background-color: #fff;
+}
+    /* 捲軸寬度  */
+    
+    .nav-cart-menu::-webkit-scrollbar {
+        width: 6px;
+        background-color: #fff;
+    }
+    /* 捲軸本體顏色 */
+    
+    .nav-cart-menu::-webkit-scrollbar-thumb {
+        background-color: var(--gray);
+    }
+    
+    .nav-cart-menu-item {
+        padding: 10px 30px;
+        margin-bottom: 20px;
+    }
+    
+    .nav-cart-menu-item:hover {
+        background: var(--gray);
+        transition-duration: 400ms;
+        transition-timing-function: ease-out;
+    }
+    
+    .nav-cart-menu-item span {
+        padding: 0;
+        margin: 5px;
+    }
+    
+    .nav-cart-menu-item i:hover {
+        color: var(--orange);
+        transition-duration: 300ms;
+        transition-timing-function: ease-out;
+    }
+    
+    footer {
+        height: 400px;
+        background: var(--light);
+        font-size: 16px;
+        color: var(--dark);
+        padding: 50px;
+    }
+    
+    .footer-head {
+        font-weight: 700;
+    }
+    
+    .footer-item li {
+        margin-top: 20px;
+    }
+    
+    #icons i {
+        margin: 5px;
+        color: var(--dark);
+    }
+    
+    #copyright {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--dark);
+        font-size: 16px;
+    }
+    /* ###Nav bar - 通知### */
+    
+    .nav-notification {
+        width: 400px;
+        height: 400px;
+        /* border: 1px solid gray; */
+        padding: 0;
+    }
+    
+    .nav-notification-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 320px;
+    }
+    
+    .nav-notification-content.no-display {
+        display: none;
+    }
+    
+    .nav-notification-content::-webkit-scrollbar-track {
+        /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+        background-color: #fff;
+    }
+    /* 捲軸寬度  */
+    
+    .nav-notification-content::-webkit-scrollbar {
+        width: 6px;
+        background-color: #fff;
+    }
+    /* 捲軸本體顏色 */
+    
+    .nav-notification-content::-webkit-scrollbar-thumb {
+        background-color: var(--gray);
+    }
+    
+    .nav-notification-tab {
+        width: 100%;
+        font-size: 0.9rem;
+        font-weight: 550;
+        color: var(--dark);
+    }
+    
+    .nav-notification-tab li {
+        /* width: 134px; */
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .nav-notification-tab li.active {
+        border-bottom: 2px solid var(--orange);
+        color: var(--orange);
+    }
+    
+    .nav-notification-article,
+    .nav-notification-progress,
+    .nav-notification-new {
+        padding: 15px 20px;
+    }
+
+        .nav-notification-article .profile-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+    
+    .nav-notification-article img:last-child {
+        width: 100px;
+        border-radius: 5px;
+    }
+    
+    .nav-notification-article:hover,
+    .nav-notification-progress:hover,
+    .nav-notification-new:hover {
+        background-color: var(--gray);
+        transition-duration: 400ms;
+    }
+    
+    .nav-notification-article div {
+        width: 200px;
+    }
+    
+    .nav-notification-progress img {
+        width: 80px;
+        border-radius: 5px;
+    }
+    
+    .nav-notification-new img {
+        width: 100px;
+        border-radius: 5px;
+    }
+    
+    .nav-notification-progress div,
+    .nav-notification-new div {
+        width: 240px;
+    }
+
+.nav-login {
+    height: 50px;
+}
+
+    .nav-login > li {
+        margin-left: 10px;
+    }
+
+    .nav-login button {
+        padding: 5px 16px;
+    }
+
+.light {
+    background-color: #FFFFDF;
+}
+
+.member-badge {
+    background-color:red;
+    color:#fff;
+    font-size:0.8rem;
+    padding:1px 3px;
+    border-radius:8px;
+
+}

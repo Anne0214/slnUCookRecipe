@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "已寄出驗證信";
+    Layout = "_LayoutForMember";
+}
+
+<div class="row">
+    <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+        <div class="d-input" style="padding:15px; border:1px solid #dadada; border-radius:15px;">
+           <div style="padding-bottom:10px;text-align:center;">
+                <a asp-controller="home" asp-action="index"><img src="/Images/core-images/logo.png" alt="logo" style="width:100px;margin:10px;"></a>
+           </div>
+            <h3 style="text-align:center;">還剩一步!</h3>
+           <h4 style="text-align:center;">註冊驗證信已寄出</h4>
+           <div style="text-align:center;padding:20px;">
+                <img src="~/images/register/email.png" style="width:100px;" />
+           </div>
+            <p style="text-align:center;margin:10px;">已寄至您的信箱(@ViewBag.Email)，請在24小時內點擊信箱連結驗證完畢</p>
+            <div style="text-align:center;">
+                <button class="btn btn-primary" id="Resend">再寄一次</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-6" style="height:100vh;overflow:hidden;" id="d-side-img">
+        <img src="/Images/core-images/loginSideImage.jpg" style="width:100%;" alt="形象照" style="object-fit:cover;" id="side-img">
+    </div>
+</div>
+
+@section Scripts{
+<script>
+    $("#Resend").click(function(){
+        console.log("hi")
+            Resend();
+    })
+    async function Resend(){
+            const response = await fetch('@Url.Content("~/Home/SendVerificationEmailAgain/")' + `?email=@ViewBag.Email`, {
+                method: 'GET',
+            });
+            const statusCode = await response.status;
+            if(statusCode==200){
+                Swal.fire({
+                    position: 'bottom-start',
+                    icon: 'success',
+                    title: '已寄出',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+            }else{
+                Swal.fire({
+                    position: 'bottom-start',
+                    icon: 'success',
+                    title: '寄出失敗><請稍後再試',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+            }
+    }
+
+</script>
+
+}
+
+

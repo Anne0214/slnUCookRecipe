@@ -1,0 +1,400 @@
+﻿@model prjMSITUCook.Models.VM.RecipeEditVM
+@{
+    ViewData["Title"] = "修改《" + Model.RecipeName + "》";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <ul class="list-unstyled" id="sidebar">
+                <li>
+                    <a href="#basic"><i class="fa-solid fa-note-sticky" style="margin-right:10px;"></i>基本資料</a>
+                </li>
+                <li>
+                    <a href="#step"><a href="#step"><i class="fa-solid fa-utensils" style="margin-right:10px;"></i>步驟</a>
+                </li>
+                <li>
+                    <a href="#food"><i class="fa-solid fa-bowl-food" style="margin-right:10px;"></i>食材</a>
+                    </i>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9">
+            <form method="post" class="needs-validation" novalidate asp-controller="Recipe" asp-action="Edit" name="EditRicipeForm" id="EditRicipeForm" enctype="multipart/form-data">
+                <div class="section" id="basic">
+                    <div class="title">
+                        <h4><i class="fa-solid fa-note-sticky"></i> 基本資料</h4>
+                    </div>
+                    <div class="content row">
+                        <input type="text" asp-for="RecipeId" hidden value="@Model.RecipeId">
+                        <input type="text" asp-for="AuthorId" hidden value="@Model.AuthorId">
+                        <div class="col-12">
+                            <label for="RecipeName" class="form-label">請輸入食譜名稱</label>
+                            <input type="text" class="form-control" asp-for="RecipeName" maxlength="20" minlength="3" required vallue="@Model.RecipeName">
+                            <div class="invalid-feedback">請至少輸入3個字做為標題</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="RecipeCover" class="form-label">食譜封面照</label><br>
+                            @{
+                                if (String.IsNullOrEmpty(Model.RecipeCover))
+                                {
+                                    <img style="width:400px;" src="/Images/recipe/UploadImage2.png" alt="上傳放置處" id="preview-cover">
+
+
+                                } else
+                                {
+                                    <img style="width:400px;" src="@Model.RecipeCover" alt="上傳放置處" id="preview-cover">
+
+                                }
+                            }
+                            <input type="text" asp-for="RecipeCover" hidden value="@Model.RecipeCover">
+                            <input type="file" asp-for="RecipeCoverFile" class="form-control" accept="image/png, image/x-png, image/jpeg, image/pjpeg">
+                        </div>
+                        <div class="col-12">
+                            <label for="ShortDescription" class="form-label">簡短說明</label>
+                            <textarea asp-for="ShortDescription" cols="30" rows="10 " maxlength="150" minlength="15" class="form-control" required>@Model.ShortDescription</textarea>
+                            <div class="invalid-feedback">請至少輸入15字食譜說明</div>
+                        </div>
+                        <div class="col-6">
+                            <label asp-for="CostMinutes" class="form-label">花費時間</label>
+                            <select class="form-select" required asp-for="CostMinutes">
+                                @{
+                                    if (Model.CostMinutes == "5")
+                                    {
+                                        <option selected value="5">5分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="5">5分鐘</option>
+                                    }
+                                    if (Model.CostMinutes == "10")
+                                    {
+                                        <option selected value="10">10分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="10">10分鐘</option>
+                                    }if (Model.CostMinutes == "15")
+                                    {
+                                        <option selected value="15">15分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="15">15分鐘</option>
+                                    }if (Model.CostMinutes == "20")
+                                    {
+                                        <option selected value="20">20分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="20">20分鐘</option>
+                                    }if (Model.CostMinutes == "30")
+                                    {
+                                        <option selected value="30">30分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="30">30分鐘</option>
+                                    }if (Model.CostMinutes == "45")
+                                    {
+                                        <option selected value="45">45分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="45">45分鐘</option>
+                                    }if (Model.CostMinutes == "60")
+                                    {
+                                        <option selected value="60">60分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="60">60分鐘</option>
+                                    }if (Model.CostMinutes == "90")
+                                    {
+                                        <option selected value="90">90分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="90">90分鐘</option>
+                                    }
+                                    if (Model.CostMinutes == "120")
+                                    {
+                                        <option selected value="120">120分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="120">120分鐘</option>
+                                    }
+                                    if (Model.CostMinutes == "180")
+                                    {
+                                        <option seleted value="180+">180+分鐘</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="180+">180+分鐘</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="Amount" class="form-label">份量</label>
+                            <select class="form-select" required asp-for="Amount">
+                                @{
+                                    if (Model.Amount == "1")
+                                    {
+                                        <option selected value="1">1人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="1">1人</option>
+                                    }
+                                    if (Model.Amount == "2")
+                                    {
+                                        <option selected value="2">2人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="2">2人</option>
+                                    }
+                                    if (Model.Amount == "3")
+                                    {
+                                        <option selected value="3">3人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="3">3人</option>
+                                    }
+                                    if (Model.Amount == "4")
+                                    {
+                                        <option selected value="4">4人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="4">4人</option>
+                                    }
+                                    if (Model.Amount == "5")
+                                    {
+                                        <option selected value="5">5人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="5">5人</option>
+                                    }
+                                    if (Model.Amount == "6")
+                                    {
+                                        <option selected value="6">6人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="6">6人</option>
+                                    }
+                                    if (Model.Amount == "7")
+                                    {
+                                        <option selected value="7">7人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="7">7人</option>
+                                    }
+                                    if (Model.Amount == "8")
+                                    {
+                                        <option selected value="8">8人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="8">8人</option>
+                                    }
+                                    if (Model.Amount == "9")
+                                    {
+                                        <option selected value="9">9人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="9">9人</option>
+                                    }
+                                    if (Model.Amount == "10")
+                                    {
+                                        <option selected value="10">10人</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="10">10人</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="section" id="step">
+                    <div class="title">
+                        <h4><i class="fa-solid fa-utensils"></i> 步驟</h4>
+                    </div>
+                    <div class="content row">
+                        <div id="steps">
+                            @{
+                                int i = 0;
+                                foreach (var s in Model.StepList)
+                                {
+                                    int step = i + 1;
+                                    string content = s.StepDescription;
+                                    string picture =(s.StepPicture != null)?s.StepPicture:"/Images/recipe/UploadImage.png";
+
+                                    <div class="step d-flex align-items-center">
+                                        <div style="width:200px;">
+                                            <img src="@picture" class="img-preview" style="width:200px;height:158px;object-fit:cover;" id="preview-step@(i)" alt="步驟預覽圖">
+                                            <input type="text" id="StepList[@(i)].StepPicture" name="StepList[@(i)].StepPicture" hidden value="@s.StepPicture">
+                                            <input type="file" class="form-control img-upload" accept="image/png, image/x-png, image/jpeg, image/pjpeg" id="StepList[@(i)].StepPictureFile" name="StepList[@(i)].StepPictureFile">
+                                        </div>
+                                        <div style="position:relative;" class="flex-fill">
+                                            <span class="number">@step</span>
+                                            <span class="btns">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                                <i class="fa-solid fa-plus"></i>
+                                            </span>
+                                            <textarea id="StepList[@(i)].StepDescription" name="StepList[@(i)].StepDescription" maxlength="200" minlength="5" class="form-control" rows="4" placeholder="請輸入步驟說明" required>@content</textarea>
+                                            <div class="invalid-feedback">請至少輸入5字步驟說明</div>
+                                        </div>
+                                    </div>
+                                    i++;
+                                }
+                            }
+                        </div>
+                        <button class="btn btn-outline-primary" id="addStep" type="button">新增步驟</button>
+                    </div>
+                </div>
+                <div class="section" id="food">
+                    <div class="title">
+                        <h4><i class="fa-solid fa-egg"></i>食材</h4>
+                    </div>
+                    <div class="content">
+                        <div class="foods">
+                            @{
+                                int c = 0;
+                                foreach (var f in Model.FoodList)
+                                {
+                                    <div class="food row">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" placeholder="名稱" id="FoodList[@(c)].FoodName" name="FoodList[@(c)].FoodName" required value="@f.FoodName">
+                                            <div class="invalid-feedback">請輸入食材名稱</div>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="text" class="form-control" placeholder="份量" id="FoodList[@(c)].FoodAmount" name="FoodList[@(c)].FoodAmount" required value = "@f.FoodAmount">
+                                            <div class="invalid-feedback">請輸入份量。如 : 一匙、適量</div>
+                                        </div>
+                                        <div style="font-size: 1.3rem; cursor: pointer;" class="col-1">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </div>
+                                    </div>
+                                    c++;
+                                }
+                            }
+                        </div>
+                        <button style="margin-top:20px;" class="btn btn-outline-primary col-12" id="addFood" type="button">新增食材</button>
+                    </div>
+
+                </div>
+                <input type="checkbox" class="form-check-input" name="agree">
+                <label for="for" class="form-check-label">發布食譜即代表同意UCook的「服務條款」</label>
+                <div class="btns">
+                    <button class="btn btn-outline-secondary" id="btnDiscard"> 捨棄</button>
+                    <input class="btn btn-primary" id="btnSubmit" type="submit" value="提交">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/create-recipe.css">
+}
+@section Scripts{
+    <script src="~/js/create-recipe.js" asp-append-version="true"></script>
+
+    <script>
+        //點擊提交後
+        $("form").submit((e) => {
+            e.preventDefault();
+            //2.按鈕disabled、變loading
+            $("#btnSubmit").attr("disabled", "diabled")
+            $("#btnSubmit").val("修改中")
+            $.busyLoadFull("show");
+            //3.打post
+            const formData = new FormData(document.EditRicipeForm);
+            SubmitRecipe(formData);
+        })
+        async function SubmitRecipe(f) {
+            try {
+                const response = await fetch('@Url.Content($"~/Recipe/Edit")', {
+                    body: f,
+                    method: 'PUT'
+                });
+                const result = await response.status;
+                $.busyLoadFull("hide");
+                if(result==200){
+                    //跳成功
+                    Swal.fire({
+                        icon: 'success',
+                        title: '修改成功',
+                        confirmButtonColor: '#FF6000',
+                        timer: 2000,
+                        timerProgressBar: true
+                    }).then(function () { //跳轉
+                        window.location.href = `@Url.Content("~/Recipe/MyPage/?SortMode=PublishedTimeDesc")`;
+                    })
+                    return;
+                }
+                $.busyLoadFull("hide");
+                Swal.fire({
+                    icon: 'error',
+                    title: '唉呀...修改失敗QQ',
+                    text: '請稍後再試',
+                    confirmButtonColor: '#FF6000',
+                    timer: 2000,
+                    timerProgressBar: true
+                })
+                //按鈕恢復原狀
+                $("#btnSubmit").html("提交");
+                $('#areaSelect').removeAttr("disabled");
+
+
+            } catch (error) {
+                //失敗
+                $.busyLoadFull("hide");
+                Swal.fire({
+                    icon: 'error',
+                    title: '唉呀...修改失敗QQ',
+                    text: '請稍後再試',
+                    confirmButtonColor: '#FF6000',
+                    timer: 2000,
+                    timerProgressBar: true
+                })
+                //按鈕恢復原狀
+                $("#btnSubmit").html("提交");
+                $('#areaSelect').removeAttr("disabled");
+            }
+        }
+        //點擊捨棄
+        $("#btnDiscard").click((e) => {
+            e.preventDefault();
+            Swal.fire({
+                icon: `warning`,
+                title: '確定要放棄變動的內容嗎?',
+                showCancelButton: true,
+                confirmButtonText: '放棄',
+                confirmButtonColor: '#FF6000',
+                cancelButtonText: '取消'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `@Url.Content("~/Recipe/MyPage/?SortMode=PublishedTimeDesc")`;
+                }
+            })
+        })
+
+    </script>
+}
+
+

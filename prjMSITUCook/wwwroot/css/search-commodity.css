@@ -1,0 +1,98 @@
+﻿@import url('color.css');
+
+.row {
+    margin-bottom: 40px;
+}
+
+.sidebar-box {
+    margin-bottom: 20px;
+}
+
+.d-order {
+    background-color: #f7f7f7;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+    .d-order > ul {
+        margin: 0;
+    }
+
+        .d-order > ul li {
+            margin: 0px 10px;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+            .d-order > ul li.active {
+                background-color: var(--orange);
+                color: #fff;
+            }
+
+                .d-order > ul li.active > select {
+                    background-color: var(--orange);
+                    color: #fff;
+                }
+
+                    .d-order > ul li.active > select > option {
+                        background-color: #fff;
+                        color: var(--dark);
+                    }
+
+            .d-order > ul li > select {
+                border: none;
+            }
+
+.d-commodity {
+    margin: 20px 0;
+}
+
+    .d-commodity .item {
+        margin: 0px;
+        width: 200px;
+        padding: 10px;
+        display: inline-block;
+    }
+
+        .d-commodity .item:hover {
+            background-color: var(--light);
+            cursor: pointer;
+        }
+
+        .d-commodity .item .title {
+            font-weight: 700;
+        }
+
+        .d-commodity .item img {
+            width: 100%;
+        }
+
+        .d-commodity .item .price {
+            color: red;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+.pagination {
+    --bs-pagination-active-bg: var(--orange);
+    --bs-pagination-active-border-color: var(--orange);
+}
+
+
+/* 拔掉數字輸入框的箭頭 */
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* 勾選框的顏色改橘色 */
+
+.form-check-input:checked {
+    background-color: var(--orange);
+    border-color: var(--orange);
+}

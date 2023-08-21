@@ -1,0 +1,154 @@
+﻿@import url('color.css');
+
+.d-intro > .title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.d-intro > .short-intro {
+    font-size: 1rem;
+}
+
+.d-intro > .original-price {
+    display: block;
+    font-size: 0.8px;
+}
+
+.d-intro > .price {
+    display: block;
+    color: red;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.d-intro > .box > .label {
+    display: inline;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+
+/* 規格 */
+
+.standard {
+    display: inline;
+}
+
+    .standard input[type=radio] {
+        display: none;
+    }
+
+    .standard input[type="radio"]:checked + label {
+        background-color: var(--orange);
+        color: #fff;
+        transition-duration: 500ms;
+    }
+
+    .standard label {
+        border: 2px solid var(--orange);
+        color: var(--orange);
+        font-size: 0.9rem;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 3px 10px;
+        margin: 5px;
+    }
+
+        .standard label:hover {
+            background-color: var(--orange);
+            color: #fff;
+            cursor: pointer;
+            transition-duration: 500ms;
+        }
+
+
+/* 數量 */
+
+.number {
+    display: inline;
+}
+
+    .number input[type=number] {
+        border: 2px solid var(--orange);
+        color: #000;
+        font-size: 0.9rem;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+
+/* 拔掉數字輸入框的箭頭 */
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* 按鈕 */
+
+.btn-other {
+    width: 48%;
+    height: 40px;
+    margin: 10px 0px;
+}
+
+.btn-purchase {
+    width: 100%;
+    height: 40px;
+    margin: 10px 0px;
+}
+
+
+/* 下方說明切換tab*/
+
+.tab-btn {
+    font-size: 1.15rem;
+    background: #dfdfdf;
+    color: #898989;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    height: 50px;
+    border-right: 0.75px solid #fff;
+}
+
+    .tab-btn.active {
+        background: var(--median);
+        color: #fff;
+        border-bottom: 3px solid #8d4d26;
+    }
+
+    .tab-btn:hover {
+        cursor: pointer;
+    }
+
+#tab2,
+#tab3,
+#tab4,
+#tab5 {
+    display: none;
+}
+
+.slider-nav img {
+    width: 60px;
+    margin: 10px;
+    box-sizing: content-box;
+}
+
+.slider-for {
+    width: 100%;
+}
+
+    .slider-for img {
+        width: 90%;
+    }
+
+.slider-nav img.active {
+    border: 2px solid var(--orange);
+}
+
+.row {
+    margin: 30px 0;
+}

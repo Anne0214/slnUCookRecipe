@@ -1,0 +1,155 @@
+@import url('color.css');
+.row {
+    margin: 50px 0px;
+}
+
+.d-img img {
+    width: 100%;
+    height:75%;
+    border-radius:10px;
+    object-fit:cover;
+}
+
+.d-intro {
+    padding:10px;
+    position: relative;
+}
+
+.d-intro .title {
+    /* font-size:1.15rem; */
+    margin: 20px 0;
+}
+
+.d-intro .author {
+    margin: 20px 0;
+}
+
+.d-intro .count {
+    margin: 0 10px;
+}
+
+.d-intro .time {
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+}
+
+.d-intro .author>a>img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.d-intro .author>a>.name {
+    font-size: 1rem;
+    margin: 0px 5px;
+}
+
+.d-intro .author>a>.btn {
+    font-size: 0.8rem;
+}
+
+.d-intro .btns {
+    margin: 20px;
+    text-align:right;
+
+}
+
+.d-intro .btns>button {
+    width: 150px;
+    margin: 0 10px;
+}
+
+.d-attribute {
+    width: 100%;
+    padding: 10px;
+}
+
+.d-attribute div {
+    text-align: center;
+    margin: 0px 10px;
+}
+
+.d-attribute .label {
+    font-size: 0.9rem;
+}
+
+.d-attribute .content {
+    font-size: 1.15rem;
+}
+
+.t-food {
+    width: 100%;
+    font-size: 1rem;
+}
+
+.t-food td {
+    padding: 8px;
+}
+
+.t-food tr td:nth-child(2n+1) {
+    text-align: left;
+    font-weight: 600;
+}
+
+.t-food tr td:nth-child(2n) {
+    text-align: right;
+}
+
+.t-food tr:nth-child(2n) {
+    background-color: var(--light);
+}
+
+.d-step {
+    margin: 0 0 40px 0;
+}
+
+.d-step>.item>img {
+    width: 240px;
+    height:180px;
+    border-radius:5px;
+}
+
+.d-step>.item {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.d-step>.item>.number {
+    display: block;
+    width:60px;
+}
+
+.d-step>.item>.description {
+    font-size: 1.1rem;
+    margin:10px;
+    width:573px;
+}
+
+.d-content .btns {
+    padding: 10px;
+}
+
+.d-content .btns .btn {
+    margin: 0px 10px 0 0;
+}
+
+.d-author>img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.d-author>div {
+
+    padding: 20px;
+}
+
+.d-author>div .name {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.d-author button {
+    font-size: 0.8rem;
+}

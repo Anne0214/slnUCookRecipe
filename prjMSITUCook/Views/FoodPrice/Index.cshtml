@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "菜價";
+}
+<div style="position:absolute;top:50px;left: -60px;z-index: -50;">
+    <img style="width:47vw;" src="~/images/food/leftfoodindex1.png" />
+</div>
+<div style="position:absolute;top:50px;right: -60px;z-index: -50;">
+    <img style="width:47vw;" src="~/images/food/rightfoodindex1.png" />
+</div>
+<div class="backgroudGradient"></div>
+<div class="container">
+    <div class="row wow animate__animated animate__fadeInDown" style="height:300px;">
+        <h1 style="text-align:center;line-height:300px;color: #704444;">每天菜價報給你</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="d-foodPriceList">
+            </div>
+        </div>
+    </div>
+   
+</div>
+@section Styles{
+    <link href="~/css/food-price.css" rel="stylesheet" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,600&display=swap" rel="stylesheet">
+}
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            GetData(1)
+            let pageIndex = 1;
+            $(window).scroll(function () {
+                if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+                    pageIndex++
+                    GetData(pageIndex)
+                }
+            });
+        })
+        function GetData(page){
+            $.ajax({
+                method: 'GET',
+                url: `@Url.Content("~/api/FoodPrice/GetPaginatedFoodPrice")`+`/${page}`,
+            }).done(res => {
+                GetFoodPriceHtml(res)
+                console.log("LoadNew")
+
+            }).fail(err => console.log(err));
+        }
+
+        
+
+        function GetFoodPriceHtml(data){
+            RawFoodPriceHtml=data.map(element =>{
+                const { cropName, priceDetail } = element
+                RawMarketHtml=priceDetail.map(item =>{
+                    const { marketName, upperPrice, lowerPrice, unit, updateTime } = item
+                    console.log(updateTime)
+                    let date = FormateDate(updateTime)
+                    return (`
+                            <div class="market">
+                                <span class="title green">${marketName}</span>
+                                <br>
+                                <span class="price">${lowerPrice}~${upperPrice}</span><span class="unit">${unit}</span>
+                                <br>
+                                <span style="font-size:0.9rem;color:gray;">更新時間:${date}</span>
+                            </div>`)
+                })
+                MarketHtml=RawMarketHtml.join("")
+                return(`
+                            <div class="item d-flex align-items-center wow animate__animated animate__flipInX">
+                            <div class="title">
+                                <h2><i class="fa-solid fa-seedling" style="color:#009f69"></i>${cropName}</h2>
+                            </div>
+                            <div class="markets">
+                               ${MarketHtml}
+                            </div>
+                        </div>
+                `)
+            
+            })
+            $(".d-foodPriceList").append(RawFoodPriceHtml.join(""))
+        }
+    </script>
+
+}

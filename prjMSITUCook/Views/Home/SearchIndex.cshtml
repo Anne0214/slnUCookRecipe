@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "SearchIndex";
+}
+
+<div class="container">
+    <div class="row" style="height:100px;"></div>
+    @await Html.PartialAsync("~/Views/Recipe/_RecipeSearchInputPartialView.cshtml")
+    <div class="row">
+        <h3>熱門搜尋</h3>
+        <ul class="d-flex list-unstyled d-keyword">
+            <li>小黃瓜</li>
+            <li>咖哩飯</li>
+            <li>義大利麵</li>
+        </ul>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/js/search-input.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $("#RecipeName").focus();
+            
+        });
+    </script>
+    <script>
+        $(".d-keyword>li").click(function(){
+            const keyword = $(this).text();
+            $("#RecipeName").val(keyword).change();
+        })
+    </script>
+}
+
+@section Styles{
+    <link rel="stylesheet" href="/css/search-recipe.css" asp-append-version="true">
+    <style>
+        .d-keyword>li{
+            padding:5px 20px;
+            border-radius:16px;
+            background-color:var(--light);
+            margin-right:10px;
+        }
+    </style>
+}

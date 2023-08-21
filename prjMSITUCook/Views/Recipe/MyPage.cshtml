@@ -1,0 +1,127 @@
+﻿@model prjMSITUCook.Models.VM.RecipeMemberVM
+@{
+    ViewData["Title"] = "我的食譜";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+        <div>
+            <img class="profile" src="@Model.ProfilePhoto" alt="作者頭貼">
+        </div>
+        <div class="header">
+            <div class="d-flex align-items-center">
+                <span class="name">@Model.NickName</span>
+                <button class="btn btn-primary btn-follow"><i class="fa-solid fa-pen fa-2xs"></i>   修改</button>
+            </div>
+            <div>
+                <span><span style="font-size:1.3rem;">@Model.RecipeCount</span>食譜</span>
+                <span><a asp-controller="Follow" asp-action="Index" asp-route-section="fan"><span style="font-size:1.3rem;">@Model.FanCount</span>粉絲</a></span>
+                <span><a asp-controller="Follow" asp-action="Index" asp-route-section="follow"><span style="font-size:1.3rem;">@Model.FollowCount</span>追蹤</a></span>
+            </div>
+            <p class="self-intro">
+                @Model.ShortIntro
+            </p>
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="d-result">
+        @await Html.PartialAsync("_RecipeListPartialView", Model,new ViewDataDictionary(ViewData)
+        {
+        { "MyRecipeArticle", "true" }
+        })
+    </div>
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/my-page.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/recipe-list.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/personal-page.css" asp-append-version="true">
+}
+
+@section Scripts{
+    <script>
+        //刪除文章
+        $(".article-delete").click(function(){
+            //找到文章id
+            const id = $(this).parents(".item").find("input").val();
+            //alert:確認是否要刪除
+            Swal.fire({
+                title: '確定要刪除?',
+                text: "刪除後不可復原喔",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#FF6000',
+                confirmButtonText: '刪除',
+                cancelButtonText:'取消',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //發ajax
+                    DeleteArticle(id);
+                }
+            })
+
+           
+        })
+
+        //發出delete文章的async function
+        async function DeleteArticle(id){
+            try{
+            const url = '@Url.Content("~/Recipe/Delete")'+`/?id=${id}`
+                const response =await fetch(url, {
+                    method: 'DELETE'
+                })
+            const result =await response.text;
+            //alert:刪除成功
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '你的食譜已刪除',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                location.reload()
+
+            }catch(error){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '刪除失敗，請稍後再試',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    toast: true,
+                })
+            }
+        }
+
+
+        //改排序後的刷新程序
+        function RefreshByOrder() {
+
+            const SortMode = $("#order").val();
+            const uri = "@Url.Content("~/Recipe/_RecipeListPartialView")" + `/?AuthorId=@(ViewBag.MemberId)&page=1&sortmode=${SortMode}`
+            $.ajax({
+                url: uri,
+                type: "GET",
+                success: (data) => { $("#d-result").html(data); },
+                error: (error) => { alert("加載失敗") }
+            })
+        }
+
+        //改select的order觸發刷新，此處要用動態繫結，因為select在partial view那裏
+        $(document).on("change", "#order", function () {
+            RefreshByOrder();
+
+        })
+        //點擊食譜往食譜頁
+        //$(document).on('click', '.my-recipe',function(){
+        //    let articleId = $(this).children('input').val();
+        //    console.log(articleId)
+        //    const uri = ''+articleId
+        //    window.location = uri;
+        //})
+
+
+    </script>
+}
+

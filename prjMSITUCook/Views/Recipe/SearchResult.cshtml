@@ -1,0 +1,104 @@
+﻿@model prjMSITUCook.Models.VM.RecipeSearchResultVM
+@using System.Text
+@{
+    ViewData["Title"] = "搜尋食譜結果";
+
+
+}
+
+<div class="container">
+    @await Html.PartialAsync("_RecipeSearchInputPartialView", Model)
+    <div class="row">
+        <div class="col">
+            <h4>
+                @{
+                    StringBuilder sb = new StringBuilder();
+                    if (!string.IsNullOrEmpty(Model.RecipeName))
+                    {
+                        sb.Append(Model.RecipeName);
+                        sb.Append(" ");
+                    }
+                    if (!string.IsNullOrEmpty(Model.FoodNames))
+                    {
+                        sb.Append("使用");
+                        sb.Append(Model.FoodNames);
+                        sb.Append(" ");
+                    }
+                    if (!string.IsNullOrEmpty(Model.CostTime) && Model.CostTime !="all")
+                    {
+                        sb.Append(Model.CostTime);
+                        sb.Append("分鐘");
+                        sb.Append(" ");
+                    }
+                    if (!string.IsNullOrEmpty(Model.Amount) && Model.Amount !="all")
+                    {
+                        sb.Append(Model.Amount);
+                        sb.Append("人份");
+                        sb.Append(" ");
+                        }
+                        string keyword=sb.ToString().Trim();
+                    }
+                <i class="fa-solid fa-magnifying-glass"></i> 搜尋「<span class="keyword">@keyword</span>」的食譜，共@(Model.RecipeCount.ToString())個結果
+            </h4>
+        </div>
+        
+    </div>
+    <div id="d-result">
+        @await Html.PartialAsync("_RecipeListPartialView", Model)
+    </div>
+
+    
+    
+    
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="/css/search-recipe.css" asp-append-version="true">
+    <link rel="stylesheet" href="/css/recipe-list.css" asp-append-version="true">
+}
+
+@section Scripts{
+    <script src="~/js/search-input.js"></script>
+<script>
+
+        //從網址得到當前搜尋的參數
+        let queryStr = location.search.split("?")[1];
+
+        let arr = queryStr.split("&");
+
+        let parameter = {}
+
+        for (var i = 0; i < arr.length; i++) {
+            var g = arr[i].split("=");
+            parameter[g[0]] = g[1]
+        }
+        const recipeName = (parameter["RecipeName"] === undefined) ? '' : parameter["RecipeName"]
+        const foodName = (parameter["FoodNames"] === undefined) ? '' : parameter["FoodNames"]
+        const amount = (parameter["Amount"] === undefined) ? '' : parameter["Amount"]
+        const costTime = (parameter["CostTime"] === undefined) ? '' : parameter["CostTime"]
+        const pageCount = (parameter["PageCount"] === undefined) ? '' : parameter["PageCount"]
+
+        
+
+        //用網址取得的資料進行刷新程序
+        function RefreshByOrder() {
+            const SortMode = $("#order").val()
+            const uri = "@Url.Content("~/Recipe/_RecipeListPartialView")" + `/?recipename=${recipeName}&foodnames=${foodName}&amount=${amount}&costtime=${costTime}&pageIndex=1&sortmode=${SortMode}&pageCount=${pageCount}`
+            $.ajax({
+                url: uri,
+                type: "GET",
+                success: (data) => { $("#d-result").html(data); },
+                error: (error) => { alert("加載失敗") }
+            })
+        }
+
+        //改select的order觸發刷新，此處要用動態繫結，因為select在partial view那裏
+        $(document).on("change", "#order", function () {
+            RefreshByOrder();
+
+        })
+
+</script>
+ 
+}
+

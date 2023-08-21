@@ -1,0 +1,547 @@
+﻿@using Microsoft.AspNetCore.Mvc.Razor;
+@using prjMSITUCook.Models.Services;
+@{
+    ViewBag.IsLogin = Context.User.Claims.FirstOrDefault(m => m.Type == "NickName") != null;
+    ViewBag.NickName = ViewBag.IsLogin ? Context.User.Claims.FirstOrDefault(m => m.Type == "NickName").Value : "0";
+    ViewBag.ProfilePhoto = ViewBag.IsLogin ? Context.User.Claims.FirstOrDefault(m => m.Type == "ProfilePhoto").Value : "0";
+    ViewBag.MemberId = ViewBag.IsLogin ? int.Parse(Context.User.Claims.FirstOrDefault(m => m.Type == "MemberId").Value) : 0;
+    //api host
+    IConfiguration Config = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
+    ViewBag.ApiHost = Config.GetSection("ApiHost").Value;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] | UCook - 享受美食，享受生活</title>
+
+    <!-- bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- SweetAlert -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Busy Load -->
+    <link href="https://cdn.jsdelivr.net/npm/busy-load@0.1.2/dist/app.min.css" rel="stylesheet">
+
+    <!-- 我們的Style -->
+    <link href="~/css/basic.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="/css/slick_slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css" />
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- 此處link自己的style -->
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <!--#### Navigation Bar ####-->
+    <nav class="d-flex justify-content-between align-items-center shadow">
+        <a asp-controller="Home" asp-action="Index"><img style="margin-left:10px;height:50px;" src="/Images/core-images/logo.png" alt="LOGO"></a>
+        <ul class="d-flex justify-content-start nav-menu">
+            <li><a asp-controller="Home" asp-action="Index">首頁</a></li>
+            <li><a asp-controller="Follow" asp-action="Index">追蹤</a></li>
+            <li><a asp-controller="FoodPrice" asp-action="Index">菜價<span class="member-badge">大會員專屬</span></a></li>
+            <li><a asp-controller="Home" asp-action="SearchIndex"><i class="fa-solid fa-magnifying-glass"></i> 搜尋食譜/作者</a></li>
+        </ul>
+        @{
+            if (ViewBag.IsLogin)
+            {
+                <ul class="d-flex justify-content-start align-items-center nav-member">
+                    <li class="nav-item dropdown">
+                        <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <img style="margin:0;width:30px;border-radius: 50%;height:30px;object-fit:cover;" src="@ViewBag.ProfilePhoto" alt="">@ViewBag.NickName
+                            </div>
+                        </a>
+                        <ul class='list-unstyled dropdown-menu nav-memeber-menu'>
+                            <li><a asp-controller="Recipe" asp-action="MyPage">我的食譜</a></li>
+                            <li><a asp-controller="Recipe" asp-action="Create">新增食譜</a></li>
+                            <li><a href='#'>收藏食譜</a></li>
+                            <li><a asp-controller="Shopping" asp-action="OrderAndCouponList">查看訂單</a></li>
+                            <li><a href='#'>會員中心</a></li>
+                            <li><a asp-controller="Home" asp-action="Logout">登出</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="btn-nav-notification">
+                            <i class="fa-solid fa-bell fa-xl ">
+                            </i>
+                        </a>
+                        <div class="nav-notification dropdown-menu">
+                            <ul class="list-unstyled d-flex justify-content-between align-items-center  nav-notification-tab">
+                                <li class="flex-fill">追蹤</li>
+                                <li class="flex-fill">互動</li>
+                            </ul>
+                            <div id="notification-follow" class="nav-notification-content no-display">
+                            </div>
+
+                            <div id="notification-new" class="nav-notification-content no-display">
+                                <!-- 此處放互動相關最新通知 -->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            }
+            else
+            {
+                <ul class="d-flex justify-content-start align-items-center nav-login">
+                    <li>
+                        <button class="btn btn-outline-primary"><a asp-controller="Home" asp-action="Login">登入</a></button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary"><a asp-controller="Home" asp-action="register">註冊</a></button>
+                    </li>
+                </ul>
+
+            }
+        }
+
+    </nav>
+
+    @RenderBody()
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer>
+        <div class="d-flex justify-content-between flex-nowrap" style="margin:auto; ">
+            <div>
+                <img style="display:block;height:80px;" src="~/Images/core-images/logo.png" alt="Logo ">
+                <div id="icons" class="d-flex justify-content-between flex-nowrap">
+                    <i class="fa-brands fa-line fa-lg"></i>
+                    <i class="fa-brands fa-facebook fa-lg "></i>
+                    <i class="fa-brands fa-twitter fa-lg"></i>
+                    <i class="fa-solid fa-envelope fa-lg"></i>
+                </div>
+            </div>
+            <div>
+                <span class="footer-head">關於UCook</span>
+                <ul class="footer-item list-unstyled ">
+                    <li>公司資訊</li>
+                    <li>徵才訊息</li>
+                    <li>廣告合作</li>
+                    <li>商品上架</li>
+                    <li>隱私權與條款</li>
+                </ul>
+            </div>
+            <div>
+                <span class="footer-head">會員服務</span>
+                <ul class="footer-item list-unstyled">
+                    <li>個人頁面</li>
+                    <li>商品訂單</li>
+                    <li>帳號設定</li>
+                    <li>忘記密碼</li>
+                </ul>
+            </div>
+            <div>
+                <span class="footer-head">我的食譜</span>
+                <ul class="footer-item list-unstyled">
+                    <li>待買清單</li>
+                    <li>收藏食譜</li>
+                    <li>新增食譜</li>
+                    <li>新增食譜</li>
+                </ul>
+            </div>
+            <div>
+                <span class="footer-head">客服與問題</span>
+                <ul class="footer-item list-unstyled">
+                    <li>建議與問題</li>
+                    <li>粉絲專頁:XXXX</li>
+                </ul>
+            </div>
+        </div>
+        <p id="copyright">Copyright©2023 UCook Inc.</p>
+    </footer>
+    <!-- jquery -->
+    <script src="~/lib/jquery/dist/jquery-3.7.0.min.js"></script>
+    <script src="~/lib/jquery/dist/js.cookie.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-templates@1.0.0/jquery.tmpl.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.8/dist/umd/popper.min.js " integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js " integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS " crossorigin="anonymous "></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.all.min.js"></script>
+    <!-- wow.js -->
+    <script src="~/js/wow.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- BusyLoad -->
+    <script src="https://cdn.jsdelivr.net/npm/busy-load@0.1.2/dist/app.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $.busyLoadSetup({
+            animation: "slide",
+            background: "rgba(255, 152, 0, 0.86)",
+            spinner: "circles",
+            animation: "slide",
+            animationDuration: 500
+        });
+
+    </script>
+    <!-- fontAwsome -->
+    <script src="https://kit.fontawesome.com/028aebd974.js " crossorigin="anonymous "></script>
+    <!-- nav -->
+    <script src="~/js/nav.js" asp-append-version="true"></script>
+
+    <!--signal r -->
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <!-- 自己寫的js -->
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- nav 小按鈕內容 -->
+    <script>
+        //全域變數:是否登入
+        var userIsLogin = @ViewBag.IsLogin.ToString().ToLower();
+        //通知:layout每讀一次就會跑一次syncNotification
+        $(document).ready(function () {
+            if ("@ViewBag.IsLogin"=="False"){return};
+            syncNotification()
+        });
+
+        //通知空值
+        const notificationDefault = `<div style="text-align:center;"><img src="@Url.Content("~/images/notification/NotificationDefault.png")" style="width:300px;"/></div>`;
+
+
+        //當通知dropdown menu關閉就會重跑notification
+        if ("@ViewBag.IsLogin" =="True") {
+            const notificationToggle = document.getElementById("btn-nav-notification");
+            let notificationObserver = new MutationObserver(mutationRecords => {
+                if(mutationRecords[0].target.ariaExpanded=="false"){
+                    syncNotification()
+                }
+
+            });
+            //觀察dropdown menu toggle的attribute
+            notificationObserver.observe(notificationToggle, {
+                attributes: true
+            });
+        };
+
+        function syncNotification(){
+            let unread = 0;
+            $.ajax({
+                method: 'GET',
+                url: `@ViewBag.ApiHost` + "/Notification/?MemberId=@(ViewBag.MemberId)&Type=0",
+            }).done((data, textStatus, xhr) => {
+                const statusCode = xhr.status;
+
+                if (statusCode == 200){
+
+                    data.forEach(function (value) {
+                        if (value.readTime == null) {
+                            unread = unread + 1
+                        }
+                    })
+                    GetNavHtmlAll(data)
+
+
+                    if (unread == 0) return;
+                    const red_dot = `<span class="badge-with-number">
+                                                                    ${unread}<span class="visually-hidden">unread messages</span>
+                                                                    </span>`
+
+                    $(".fa-bell").html(red_dot);
+                }
+                
+                
+            }).fail(err => console.log(err));
+            
+        }  
+
+        //通知已讀
+        $(".nav-notification-tab>li:contains(追蹤)").mouseleave(function () {
+            //抓到所有下面的input
+            var idArray = new Array();
+            $("#notification-follow").find(".light").each(function () {
+                $(this).find("input").each(function () {
+                    idArray.push(parseInt($(this).val(), 10));
+                })
+            });
+            //each，打api把裡面所有的通知已讀
+            if (idArray.length === 0) { return; }
+            $.ajax({
+                method: 'PUT',
+                url: `@ViewBag.ApiHost` + "/Notification",
+                data: JSON.stringify(idArray),
+                headers: {
+                    'Accept': "application/json, text/plain, */*",
+                    'Content-Type': "application/json;charset=utf-8"
+                },
+            }).done(res =>
+                console.log(res)
+            ).fail(err => console.log(err));
+
+            $(".fa-bell").html("");
+        });
+
+        $(".nav-notification-tab>li:contains(互動)").mouseenter(function () {
+            //抓到所有下面的input未讀的
+            var idArray = new Array();
+            $("#notification-new").find(".light").each(function () {
+                $(this).find("input").each(function () {
+                    idArray.push(parseInt($(this).val(), 10));
+                })
+            });
+            //each，打api把裡面所有的通知已讀
+            if (idArray.length === 0) { return; }
+            $.ajax({
+                method: 'PUT',
+                url: `@ViewBag.ApiHost` + "/Notification",
+                data: JSON.stringify(idArray),
+                headers: {
+                    'Accept': "application/json, text/plain, */*",
+                    'Content-Type': "application/json;charset=utf-8"
+                },
+            }).done(res =>
+                console.log(res)
+            ).fail(err => console.log(err));
+
+            ////未讀數消失
+            $(".fa-bell").html("");
+        })
+
+        //得到nav通知的資料
+        function GetNavHtmlAll(data) {
+            GetNavNewsHtml(data)
+            GetNavFollowHtml(data)
+        }
+
+        //時間資料格式化(漂漂亮亮)
+        function FormateDate(date) {
+            let now = new Date();
+            let target = new Date(date);
+            let TimeDiff = parseInt(Math.abs(now - target) / 1000 / 60); //距今相差幾分鐘(有小數點)
+            if (TimeDiff <= 1) {
+                return `不到一分鐘前`;
+            } else if (1 < TimeDiff & TimeDiff < 60) {
+                let minute = Math.floor(TimeDiff)
+                return `${minute}分鐘前`
+            } else if (60 <= TimeDiff & TimeDiff < 1440) {
+                let hour = Math.floor(TimeDiff / 60)
+                return `${hour}小時前`
+            } else {
+                return ((target.getMonth()+1).toString()) + '-' + target.getDate() + ' ' + target.getHours() + ':' + target.getMinutes()
+            }
+        }
+        //空值
+
+        function GetNavNewsHtml(data) {
+
+            var news_data = data.filter(function (e) { return e.type == 5 || e.type == 4 || e.type == 6; });
+            
+            //如果沒有通知，要放空值
+            if (news_data.length ==0){
+                $("#notification-new").html(notificationDefault)
+                return;
+            }
+            var news_html = news_data.map(element => {
+                const { notificationId, notificationTime, relatedRecipe, type, relatedMember, readTime, mergedNotificationCount, mergeNotificationId } = element
+                let time = FormateDate(notificationTime)
+                if (type == 4) {
+                    //四號通知
+                    if (readTime == null) {
+                        return (`
+                                                                                                    <a href="@Url.Content("~/Recipe/Article/?id=")${relatedRecipe.id}">
+                                                                                                        <div class="d-flex justify-content-between align-items-center nav-notification-new light">
+                                                                                                            <div>
+                                                                                                                <input type="text" hidden value="${notificationId}"/>
+                                                                                                                <span style="font-weight:550;">您的食譜 「${relatedRecipe.name}」收到了新的讚 ! </span><br>
+                                                                                                                <span style="color:rgb(168, 168, 168);font-size:0.9rem;">${time}</span>
+                                                                                                            </div>
+                                                                                                            <img src="${relatedRecipe.cover}" alt="食譜圖"/>
+                                                                                                        </div>
+                                                                                                    </a>`)
+
+                    } else {
+                        return (`
+                                                                                                <a href="@Url.Content("~/Recipe/Article/?id=")${relatedRecipe.id}">
+                                                                                                    <div class="d-flex justify-content-between align-items-center nav-notification-new">
+                                                                                                        <div>
+                                                                                                            <input type="text" hidden value="${notificationId}"/>
+                                                                                                            <span style="font-weight:550;">您的食譜 「${relatedRecipe.name}」收到了新的讚 ! </span><br>
+                                                                                                            <span style="color:rgb(168, 168, 168);font-size:0.9rem;">${time}</span>
+                                                                                                        </div>
+                                                                                                        <img src="${relatedRecipe.cover}" alt="食譜圖" />
+                                                                                                    </div>
+                                                                                                </a>`)
+                    }
+                } else if (type == 5) {
+                    //五號通知
+                    if (readTime == null) {
+                        return (`
+                                                                                                <a href="@Url.Content("~/Follow/index/?section=fan")">
+                                                                                                    <div class="d-flex justify-content-between align-items-center nav-notification-new light">
+                                                                                                        <div>
+                                                                                                            <input type="text" hidden value="${notificationId}"/>
+                                                                                                            <span style ="font-weight:550;">${relatedMember.nickname}開始追蹤你 </span><br>
+                                                                                                            <span style="color:rgb(168, 168, 168);font-size:0.9rem;"> ${time} </span>
+                                                                                                        </div>
+                                                                                                            <img src="${relatedMember.profilePicture}" alt="頭貼"/>
+                                                                                                    </div>
+                                                                                                </a>`)
+
+                    } else {
+                        return (`
+                                                                                                <a href="@Url.Content("~/Follow/index/?section=fan")">
+                                                                                            <div class="d-flex justify-content-between align-items-center nav-notification-new">
+                                                                                                <div>
+                                                                                                    <input type="text" hidden value="${notificationId}"/>
+                                                                                                    <span style ="font-weight:550;">${relatedMember.nickname}開始追蹤你 </span><br>
+                                                                                                    <span style="color:rgb(168, 168, 168);font-size:0.9rem;"> ${time} </span>
+                                                                                                </div>
+                                                                                                    <img src="${relatedMember.profilePicture}" alt="頭貼"/>
+                                                                                            </div>
+                                                                                        </a>`)
+                    }
+                } else {
+                    //6號通知
+
+                    let input_html_mergedNotificationId = ``;
+                    mergeNotificationId.forEach(function (e) {
+                        input_html_mergedNotificationId
+                            += `<input type="text" hidden value="${e}"/>`;
+                    })
+
+                    if (readTime == null) {
+                        return (`
+                                                                                                        <a href="@Url.Content("~/Follow/index/?section=fan")">
+                                                                                                            <div class="d-flex justify-content-between align-items-center nav-notification-new light">
+                                                                                                                <div>
+                                                                                                                    <input type="text" hidden value="${notificationId}"/>
+                                                                                                                    ${input_html_mergedNotificationId}
+                                                                                                                    <span style ="font-weight:550;">${relatedMember.nickname}等${mergedNotificationCount}人開始追蹤你 </span><br>
+                                                                                                                    <span style="color:rgb(168, 168, 168);font-size:0.9rem;"> ${time} </span>
+                                                                                                                </div>
+                                                                                                                    <img src="${relatedMember.profilePicture}" alt="頭貼"/>
+                                                                                                            </div>
+                                                                                                        </a>`)
+
+                    } else {
+                        return (`
+                                                                                                        <a href="@Url.Content("~/Follow/index/?section=fan")">
+                                                                                                    <div class="d-flex justify-content-between align-items-center nav-notification-new">
+                                                                                                        <div>
+                                                                                                            <input type="text" hidden value="${notificationId}"/>
+                                                                                                            ${input_html_mergedNotificationId}
+                                                                                                            <span style ="font-weight:550;">${relatedMember.nickname}等${mergedNotificationCount}人開始追蹤你 </span><br>
+                                                                                                            <span style="color:rgb(168, 168, 168);font-size:0.9rem;"> ${time} </span>
+                                                                                                        </div>
+                                                                                                            <img src="${relatedMember.profilePicture}" alt="頭貼"/>
+                                                                                                    </div>
+                                                                                              </a>`)
+
+                    }
+                }
+            })
+            $("#notification-new").html(news_html.join(""))
+        }
+        function GetNavFollowHtml(data) {
+            var follow_data = data.filter(function (e) { return e.type == 1; })
+            if (follow_data.length == 0) {
+                $("#notification-follow").html(notificationDefault)
+                return;
+            }
+            var follow_html = follow_data.map(element => {
+                const { notificationTime, notificationId, relatedRecipe, readTime } = element
+                let time = FormateDate(notificationTime)
+                if (readTime == null) {
+                    return (`<a href="@Url.Content("~/Recipe/Article/?id=")${relatedRecipe.id}">
+                                                                                                    <div class="d-flex justify-content-between align-items-center nav-notification-article light">
+                                                                                                            <input type="text" hidden value="${notificationId}">
+                                                                                                            <img src="${relatedRecipe.authorProfilePicture}" alt="頭貼" class="profile-picture">
+                                                                                                            <div>
+                                                                                                                <span style="color:rgb(135, 135, 135);font-size:0.9rem;">${relatedRecipe.authorName}</span>
+                                                                                                                <br>
+                                                                                                                <span style="font-weight:550;">${relatedRecipe.name}</span> <br>
+                                                                                                                <span style="color:rgb(168, 168, 168);font-size:0.9rem;">${time}</span>
+                                                                                                            </div>
+                                                                                                            <img src="${relatedRecipe.cover}" alt="食譜圖"/>
+                                                                                                    </div>
+                                                                                                 </a>
+                                                                                        `);
+
+                } else {
+
+                    return (`<a href="@Url.Content("~/Recipe/Article/?id=")${relatedRecipe.id}">
+                                                                                            <div class="d-flex justify-content-between align-items-center nav-notification-article">
+                                                                                                    <input type="text" hidden value="${notificationId}">
+                                                                                                            <img src="${relatedRecipe.authorProfilePicture}" alt="頭貼" class="profile-picture">
+                                                                                                    <div>
+                                                                                                        <span style="color:rgb(135, 135, 135);font-size:0.9rem;">${relatedRecipe.authorName}</span>
+                                                                                                        <br>
+                                                                                                        <span style="font-weight:550;">${relatedRecipe.name}</span> <br>
+                                                                                                        <span style="color:rgb(168, 168, 168);font-size:0.9rem;">${time}</span>
+                                                                                                    </div>
+                                                                                                <img src="${relatedRecipe.cover}" alt="食譜圖" />
+                                                                                            </div>
+                                                                                         </a>
+                                                                                `)
+                }
+            })
+            $("#notification-follow").html(follow_html.join(""))
+        }
+
+
+
+    </script>
+    <script>
+        "use strict";
+
+        //建立連線
+        var connection = new signalR.HubConnectionBuilder().withUrl("/notifyHub").build();
+
+
+        //在連線上繫節事件
+        connection.on("GetNewNotification", function(){
+            setTimeout(function () {
+                syncNotification()
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'warning',
+                    iconHtml: '<i class="fa-solid fa-bell"></i>',
+                    showConfirmButton: false,
+                    title: '<p style="font-weight:500">有新的通知喔!</p>',
+                    timer: 1500,
+                    toast: true,
+                })
+            }, 1000);
+            
+        })
+
+        connection.on("RefreshNotification", function () {
+            setTimeout(function () {
+                syncNotification()
+            }, 1000);
+            
+        })
+
+        //連線開始就啟用
+        connection.start().then(function () {
+            return;
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+    </script>
+
+
+</body>
+
+</html>
+

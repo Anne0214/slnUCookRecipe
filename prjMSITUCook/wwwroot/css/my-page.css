@@ -1,0 +1,17 @@
+.item {
+    position: relative;
+}
+
+.action {
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+.action-btn {
+    border: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    font-size: 1.5rem;
+}

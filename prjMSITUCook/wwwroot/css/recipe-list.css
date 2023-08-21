@@ -1,0 +1,80 @@
+@import url('color.css');
+.d-result .item .img-recipe {
+    width: 350px;
+    height: 262.5px;
+    object-fit: cover;
+    border-radius:10px;
+    object-position:center;
+
+}
+.d-result .item .img-recipe img {
+     width:100%;
+     height:100%;
+}
+
+.d-result {
+   margin-bottom: 50px;
+}
+
+.d-result .item {
+    margin: 30px 0;
+}
+
+.d-result .item .img-author {
+    width: 30px;
+    border-radius: 50%;
+    height:30px;
+    object-fit:cover;
+}
+.d-result .item .intro {
+    position: relative;
+    width: 940px;
+    padding:10px 20px;
+}
+
+.d-result .author {
+    font-size: 1rem;
+}
+
+.d-result .time {
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+}
+
+
+
+.d-result .item .food,
+.d-result .item .description {
+    margin: 20px 0;
+}
+    .d-result .item h3 {
+        font-weight:600;
+        margin-bottom:20px;
+        color:var(--orange);
+    }
+    .d-result .item .description {
+        height:48px;
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2; /*¦æ¼Æ*/
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
+    .d-result .item .food > li {
+        background-color: var(--light);
+        padding: 5px 10px;
+        margin: 0 8px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+    }
+
+.d-result .item .count {
+    margin: 0 10px;
+}
+
+.d-result .item .counts {
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+}

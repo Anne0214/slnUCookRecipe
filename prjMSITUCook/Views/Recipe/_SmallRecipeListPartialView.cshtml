@@ -1,0 +1,31 @@
+﻿@model List<prjMSITUCook.Models.VM.RecipeSmallItem>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    if (Model == null)
+    {
+        <div style="text-align:center;">
+            <img src="~/images/search/searchrecipedefault.png" />
+        </div>
+    }
+    else
+    {
+        foreach (var i in Model)
+        {
+            <a asp-controller="Recipe" asp-action="Article" asp-route-id="@(i.RecipeId)">
+                <div class="d-follow-content-item">
+                    <div class="img">
+                        <img style="width:100%;" src="@i.RecipeCover"
+                             alt="食譜圖">
+                    </div>
+
+                    <span class="title">@i.RecipeName</span>
+                    <span class="author">@i.NickName</span>
+                </div>
+            </a>
+        }
+
+    }
+}

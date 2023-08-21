@@ -1,0 +1,55 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model prjMSITUCook.Models.VM.RecipeSearchAuthorResultVM
+
+
+@{
+    if (Model.AuthorSearchResult == null || Model.AuthorSearchResult.Count() <= 0)
+    {
+        <div style="text-align:center;">
+            <img src="~/images/search/authorlistdefault.png" style="width:400px"/>
+        </div>
+    }
+    else { 
+    foreach (var i in Model.AuthorSearchResult)
+        {
+           
+            <div class="d-user d-flex align-items-center">
+                <img src="@i.ProfilePhoto" alt="頭貼">
+                <div class="flex-grow-1 d-content" style="margin:0px 20px;">
+                    <a asp-controller="Recipe" asp-action="Member" asp-route-AuthorId="@i.MemberId">
+                        <span style="font-weight:600;font-size:1.15rem;color:var(--orange);">@i.NickName</span><br>
+                        <span>@i.RecipeCount</span>
+                        <span>食譜</span>
+                        <span>@i.FanCount</span>
+                        <span>粉絲</span> <br>
+                        <span>@i.SelfIntro</span>
+                    </a>
+                </div>
+                <input hidden type="text" value="@i.MemberId"/>
+            @if(ViewBag.Member != 0)
+            {
+                if (i.AuthorIsFollowed)
+                {
+                    <button class="btn btn-outline-primary btn-follow" style="white-space: nowrap;"><i class="fa-solid fa-user-large-slash"></i> 取消追蹤</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary btn-follow" style="white-space: nowrap;"><i class="fa-solid fa-user-plus"></i> 追蹤</button>
+                }
+
+            }
+            else
+            {
+                    <button class="btn btn-primary" style="white-space: nowrap;" onclick="NotLogin()"><i class="fa-solid fa-user-plus"></i> 追蹤</button>
+            }
+        </div>
+           
+        }
+    }
+}
+
+
+

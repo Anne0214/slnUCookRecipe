@@ -1,0 +1,105 @@
+﻿@using prjMSITUCook.Models.VM;
+
+@{
+    ViewData["Title"] = "優料理";
+}
+@model HomeIndexVM
+<div class="banner">
+    <h1 style="text-align:center;color:#fff;position:relative;top:50px;">今天想吃什麼?</h1>
+    <div class="searchInput input-group">
+        <input type="text" placeholder="輸入想吃的東西吧" class="form-control" id="FakeSearchInput"/>
+        <input type="submit" value="搜尋" class="btn btn-primary" style="padding:0 50px;"/>
+    </div>
+</div>
+<div class="container">
+    <div class="row section">
+        <div class="col d-index-box-recipe d-index-box">
+            <h3 class="h-rectangle">最新食譜</h3>
+            <div class="content d-flex justify-content-between">
+                @{
+                    foreach (var r in Model.LatestRecipes)
+                    {
+                        <a asp-controller="recipe" asp-action="article" asp-route-id="@r.RecipeId">
+                            <div class="item">
+                                <img src="@r.RecipeCover" alt="食譜圖">
+                                <h4 class="title">@r.RecipeName</h4>
+                                <div class="author d-flex align-items-center">
+                                    <img class="authorPic" src="@r.AuthorPic" />
+                                    <div class="detail">
+                                        <p class="authorName">@r.AuthorName</p>
+                                        <p>@r.PublishedTime.ToString("yyyy-MM-dd")</p>
+                                    </div>
+                                    <div class="like-container">
+                                        <p><i class="fa-regular fa-heart"></i>@r.Likes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="/css/index.css" asp-append-version="true">
+    <!-- 字體 -->
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@700&display=swap');
+    </style>
+    <style>
+        .banner{
+            background-image: url(' https://i.imgur.com/UFbjfZu.jpg');
+            /* background-color: #000; */
+            background-position: right center;
+            width: 100%;
+            height: 334px;
+            background-size: cover;
+            position: relative;
+            animation-name: zoom-in;
+            animation-duration: 160s;
+            animation-timing-function: ease-out;
+        }
+
+        .searchInput {
+            width: 1320px;
+            margin: auto;
+            position: relative;
+            top: 90px;
+        }
+
+        @@keyframes zoom-in {
+    0% {
+        background-size:100%;
+    }
+    25% {
+        background-size: 120%;
+    }
+    50% {
+                background-size: 160%;
+    }
+    75% {
+                background-size: 170%;
+            }
+    100% {
+                background-size: 150%;
+    }
+}
+
+    </style>
+
+}
+@section Scripts{
+    <script src="/js/index.js" asp-append-version="true"></script>
+    <script>
+        $("#FakeSearchInput").focus(function () {
+            window.location ='@Url.Content("~/home/searchIndex")';
+        })
+    </script>
+}
+
