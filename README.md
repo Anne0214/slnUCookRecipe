@@ -16,7 +16,7 @@ UCook是一個食譜分享平台，優化食譜的搜尋與發表過程，讓料
    ```
 1. Clone Api repo(將部分API抽離在另個專案以練習開API，故也要下載該API的專案)
    ```
-   git clone https://github.com/Anne0214/solMSITUCookApi.git
+   git clone https://github.com/Anne0214/slnUCookRecipeApi.git
    ```
 1. 在MSSQL Server Management Studio執行本Repo中的`ProjectUCookDatabase.sql`指令檔，建立資料庫
 2. 詢問作者API Key後，將API Key填入 `appsetting.json`中的`ChatGPTAPIKey`的value
