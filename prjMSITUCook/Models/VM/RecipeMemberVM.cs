@@ -36,6 +36,11 @@ namespace prjMSITUCook.Models.VM
         public string CostTime { get; set; }
         public string FoodNames { get; set; }
         public int? AuthorId { get; set; }
+
+        public bool HasNextPage { get; set; }
+
+        public bool HasPreviousPage { get; set; }
+
     }
 
 }

@@ -100,6 +100,8 @@ namespace prjMSITUCook.Controllers
                                         .Map<RecipeListItemResultModel
                                             , RecipeListItemVM>(x)).ToList();
             vm.PageCount = resultModel.ResultList.TotalPages;
+            vm.HasNextPage = resultModel.ResultList.HasNextPage;
+            vm.HasPreviousPage = resultModel .ResultList.HasPreviousPage;
             return View(vm);
         }
         [Authorize]
@@ -133,6 +135,8 @@ namespace prjMSITUCook.Controllers
                                                 .Map<RecipeListItemResultModel, 
                                                     RecipeListItemVM>(x)).ToList();
             vm.PageCount = resultModel.ResultList.TotalPages;
+            vm.HasNextPage = resultModel.ResultList.HasNextPage;
+            vm.HasPreviousPage = resultModel.ResultList.HasPreviousPage;
 
             return View(vm);
 
@@ -261,6 +265,8 @@ namespace prjMSITUCook.Controllers
                                         RecipeListItemVM>(x)).ToList();
 
             vm.PageCount = resultModel.ResultList.TotalPages;
+            vm.HasNextPage = resultModel.ResultList.HasNextPage;
+            vm.HasPreviousPage = resultModel.ResultList.HasPreviousPage;
 
 
 
@@ -305,6 +311,8 @@ namespace prjMSITUCook.Controllers
                                     .Map<RecipeListItemResultModel,
                                         RecipeListItemVM>(x)).ToList();
             vm.PageCount = resultModel.ResultList.TotalPages;
+            vm.HasNextPage = resultModel.ResultList.HasNextPage;
+            vm.HasPreviousPage = resultModel.ResultList.HasPreviousPage;
 
             return PartialView(vm);
         }

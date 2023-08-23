@@ -25,5 +25,9 @@ namespace prjMSITUCook.Models.Interface
         /// 食譜作者Id
         /// </summary>
         int? AuthorId { get; set; }
+
+        bool HasNextPage { get; set; }
+
+        bool HasPreviousPage { get; set; }  
     }
 }

@@ -32,5 +32,10 @@ namespace prjMSITUCook.Models.VM
         /// 搜尋結果
         /// </summary>
         public List<RecipeListItemVM> ItemList { get; set; }
+
+        public bool HasNextPage { get; set; }
+
+        public bool HasPreviousPage { get; set; }
+
     }
 }

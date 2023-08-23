@@ -148,24 +148,34 @@
 <div class="row">
     <ul class="pagination">
         @{
-            if (Model.PageIndex > 1)
+            string actionName = "";
+            if (Model.GetType()==typeof(RecipeSearchResultVM))
             {
-                <li class="page-item"><a class="page-link" asp-controller="Recipe" asp-action="SearchResult" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@(Model.PageIndex-1)" asp-route-AuthorId="@(Model.AuthorId)">上一頁</a></li>
+                actionName ="SearchResult";
+            }
+            else
+            {
+
+                actionName = "Member";
+            }
+            if (Model.HasPreviousPage)
+            {
+                <li class="page-item"><a class="page-link" asp-controller="Recipe" asp-action="@actionName" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@(Model.PageIndex-1)" asp-route-AuthorId="@(Model.AuthorId)">上一頁</a></li>
             }
             for (int p = 1; p <= Model.PageCount; p++)
                 {
                     if (p == Model.PageIndex)
                     {
-                    <li class="page-item active"><a class="page-link" asp-controller="Recipe" asp-action="SearchResult" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@p" asp-route-AuthorId="@(Model.AuthorId)">@p</a></li>
+                    <li class="page-item active"><a class="page-link" asp-controller="Recipe" asp-action="@actionName" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@p" asp-route-AuthorId="@(Model.AuthorId)">@p</a></li>
                     }
                     else
                     {
-                    <li class="page-item"><a class="page-link" asp-controller="Recipe" asp-action="SearchResult" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@p" asp-route-AuthorId="@(Model.AuthorId)">@p</a></li>
+                    <li class="page-item"><a class="page-link" asp-controller="Recipe" asp-action="@actionName" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@p" asp-route-AuthorId="@(Model.AuthorId)">@p</a></li>
                     }
             }
-            if (Model.PageIndex < Model.PageCount)
+            if (Model.HasNextPage)
             {
-                <li class="page-item"><a class="page-link" asp-controller="Recipe" asp-action="SearchResult" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@(Model.PageIndex+1)" asp-route-AuthorId="@(Model.AuthorId)">下一頁</a></li>
+                <li class="page-item"><a class="page-link" asp-controller="Recipe" asp-action="@actionName" asp-route-SortMode="@Model.SortMode" asp-route-RecipeName="@Model.RecipeName" asp-route-FoodNames="@Model.FoodNames" asp-route-Amount="@Model.Amount" asp-route-CostTime="@Model.CostTime" asp-route-PageIndex="@(Model.PageIndex+1)" asp-route-AuthorId="@(Model.AuthorId)">下一頁</a></li>
             }
 
         }
