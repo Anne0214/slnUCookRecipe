@@ -11,5 +11,6 @@ namespace prjMSITUCook.Models.Hubs
             var id = connection.User?.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             return id;
         }
+
     }
 }
