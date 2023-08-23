@@ -69,9 +69,7 @@ namespace prjMSITUCook.Controllers
                                                 .Map<RecipeFoodResultModel, RecipeArticleFoodsVM>(x))
                                 .ToList();
 
-            //if (String.IsNullOrEmpty(vm.RecipeCover)) {
-            //    vm.RecipeCover = ;
-            //}
+
             return View(vm);
         }
 

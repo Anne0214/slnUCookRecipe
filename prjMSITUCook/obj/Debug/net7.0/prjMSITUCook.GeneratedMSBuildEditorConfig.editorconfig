@@ -9,113 +9,113 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = prjMSITUCook
 build_property.RootNamespace = prjMSITUCook
-build_property.ProjectDir = D:\git\slnUCook\prjMSITUCook\
+build_property.ProjectDir = C:\git\UCook\slnUCookRecipe\prjMSITUCook\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\git\slnUCook\prjMSITUCook
+build_property.MSBuildProjectDirectory = C:\git\UCook\slnUCookRecipe\prjMSITUCook
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Follow/Index.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Follow/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/FoodPrice/Index.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/FoodPrice/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9vZFByaWNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/Index.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/Login.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/NotFound.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3RGb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/Register.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/RegisterSuccess.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/RegisterSuccess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RlclN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/SearchIndex.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/SearchIndex.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/SendVerificationLetter.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/SendVerificationLetter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZW5kVmVyaWZpY2F0aW9uTGV0dGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Home/VIP.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Home/VIP.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWSVAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/Article.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/Article.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXEFydGljbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/Create.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/Edit.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/Member.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/Member.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXE1lbWJlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/MyPage.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/MyPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXE15UGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/SearchAuthorResult.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/SearchAuthorResult.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXFNlYXJjaEF1dGhvclJlc3VsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/SearchResult.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/SearchResult.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXFNlYXJjaFJlc3VsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/_AuthorListPartialView.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/_AuthorListPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9BdXRob3JMaXN0UGFydGlhbFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/_RecipeListPartialView.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/_RecipeListPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9SZWNpcGVMaXN0UGFydGlhbFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/_RecipeSearchInputPartialView.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/_RecipeSearchInputPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9SZWNpcGVTZWFyY2hJbnB1dFBhcnRpYWxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Recipe/_SmallRecipeListPartialView.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Recipe/_SmallRecipeListPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjaXBlXF9TbWFsbFJlY2lwZUxpc3RQYXJ0aWFsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Shared/_LayoutForMember.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Shared/_LayoutForMember.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRGb3JNZW1iZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/_ViewImports.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/_ViewStart.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/git/slnUCook/prjMSITUCook/Views/Shared/_Layout.cshtml]
+[C:/git/UCook/slnUCookRecipe/prjMSITUCook/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8z5uogyd3t

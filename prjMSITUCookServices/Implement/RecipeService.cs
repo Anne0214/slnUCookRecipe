@@ -316,8 +316,6 @@ namespace prjMSITUCookServices.Implement
             {
                 data = data.Where(x => x.RecipeName食譜名稱.Contains(info.RecipeName));
             }
-            //info.Amount = (info.Amount == "all") ? "" : info.Amount;
-            //info.CostTime = (info.CostTime == "all") ? "" : info.CostTime;
             if (!string.IsNullOrEmpty(info.Amount) && info.Amount != "all")
             {
                 data = data.Where(x => x.Amount份量 == info.Amount);
@@ -359,7 +357,6 @@ namespace prjMSITUCookServices.Implement
 
             //食材篩選
             //載入食譜的食材資料
-            //query.ForEachAsync(q => _context.Entry(q).Collection(x => x.Food食材s).Load());
             if (!string.IsNullOrEmpty(info.FoodNames))
             {
                 string[] food_names = info.FoodNames.Split(" "); //拆解每個食材變array

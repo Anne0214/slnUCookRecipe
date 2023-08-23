@@ -1,0 +1,473 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\prjMSITUCook.bundle.scp.css",
+      "PackagePath": "staticwebassets\\prjMSITUCook.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\Food\\leftFoodIndex.png",
+      "PackagePath": "staticwebassets\\Images\\Food\\leftFoodIndex.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\Food\\leftFoodIndex1.png",
+      "PackagePath": "staticwebassets\\Images\\Food\\leftFoodIndex1.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\Food\\rightFoodIndex.png",
+      "PackagePath": "staticwebassets\\Images\\Food\\rightFoodIndex.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\Food\\rightFoodIndex1.png",
+      "PackagePath": "staticwebassets\\Images\\Food\\rightFoodIndex1.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\7-eleven_logo.png.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\7-eleven_logo.png.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\addtocart.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\addtocart.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\coffee.jpg",
+      "PackagePath": "staticwebassets\\Images\\core-images\\coffee.jpg"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\coffeead.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\coffeead.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\color-example.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\color-example.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\dry goods.jpg",
+      "PackagePath": "staticwebassets\\Images\\core-images\\dry goods.jpg"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\fathersDay.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\fathersDay.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\loginSideImage.jpg",
+      "PackagePath": "staticwebassets\\Images\\core-images\\loginSideImage.jpg"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\logo-reverse.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\logo-reverse.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\logo.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\logo.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\noprodCart.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\noprodCart.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\profile.jpg",
+      "PackagePath": "staticwebassets\\Images\\core-images\\profile.jpg"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\profile01.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\profile01.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\roastCouponCode.png",
+      "PackagePath": "staticwebassets\\Images\\core-images\\roastCouponCode.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\core-images\\service.jpg",
+      "PackagePath": "staticwebassets\\Images\\core-images\\service.jpg"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\background.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\background.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\bigger.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\bigger.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\browse.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\browse.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\coupon.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\coupon.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\delete.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\delete.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\discount.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\discount.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\gift.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\gift.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\greenline.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\greenline.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\lineword.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\lineword.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\newest.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\newest.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\nodiscount.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\nodiscount.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\orders.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\orders.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\question.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\question.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\recommend.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\recommend.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\star.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\star.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\test.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\test.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\test123.gif",
+      "PackagePath": "staticwebassets\\Images\\icon\\test123.gif"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\icon\\topsales.png",
+      "PackagePath": "staticwebassets\\Images\\icon\\topsales.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-01.png",
+      "PackagePath": "staticwebassets\\Images\\index\\index-01.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-02.png",
+      "PackagePath": "staticwebassets\\Images\\index\\index-02.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-04.png",
+      "PackagePath": "staticwebassets\\Images\\index\\index-04.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-05.png",
+      "PackagePath": "staticwebassets\\Images\\index\\index-05.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-06.png",
+      "PackagePath": "staticwebassets\\Images\\index\\index-06.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-07.png",
+      "PackagePath": "staticwebassets\\Images\\index\\index-07.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\index\\index-cover.jpg",
+      "PackagePath": "staticwebassets\\Images\\index\\index-cover.jpg"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\notification\\NotificationDefault.png",
+      "PackagePath": "staticwebassets\\Images\\notification\\NotificationDefault.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\recipe\\UploadImage.png",
+      "PackagePath": "staticwebassets\\Images\\recipe\\UploadImage.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\recipe\\UploadImage2.png",
+      "PackagePath": "staticwebassets\\Images\\recipe\\UploadImage2.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\recipe\\recipeDefault.png",
+      "PackagePath": "staticwebassets\\Images\\recipe\\recipeDefault.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\register\\NotFoud.png",
+      "PackagePath": "staticwebassets\\Images\\register\\NotFoud.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\register\\RegisterSuccess.png",
+      "PackagePath": "staticwebassets\\Images\\register\\RegisterSuccess.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\register\\email.png",
+      "PackagePath": "staticwebassets\\Images\\register\\email.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\search\\AuthorListDefault.png",
+      "PackagePath": "staticwebassets\\Images\\search\\AuthorListDefault.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\search\\searchRecipeDefault.png",
+      "PackagePath": "staticwebassets\\Images\\search\\searchRecipeDefault.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\vip\\VIPArticle.png",
+      "PackagePath": "staticwebassets\\Images\\vip\\VIPArticle.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\vip\\VIPBanner.png",
+      "PackagePath": "staticwebassets\\Images\\vip\\VIPBanner.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\vip\\VIPLike.png",
+      "PackagePath": "staticwebassets\\Images\\vip\\VIPLike.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\vip\\ad-blocker.png",
+      "PackagePath": "staticwebassets\\Images\\vip\\ad-blocker.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\Images\\vip\\vegetable.png",
+      "PackagePath": "staticwebassets\\Images\\vip\\vegetable.png"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\basic.css",
+      "PackagePath": "staticwebassets\\css\\basic.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\cart-first.css",
+      "PackagePath": "staticwebassets\\css\\cart-first.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\cart-second.css",
+      "PackagePath": "staticwebassets\\css\\cart-second.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\color.css",
+      "PackagePath": "staticwebassets\\css\\color.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\commodity.css",
+      "PackagePath": "staticwebassets\\css\\commodity.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\create-recipe.css",
+      "PackagePath": "staticwebassets\\css\\create-recipe.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\follow-list.css",
+      "PackagePath": "staticwebassets\\css\\follow-list.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\food-price.css",
+      "PackagePath": "staticwebassets\\css\\food-price.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\my-page.css",
+      "PackagePath": "staticwebassets\\css\\my-page.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\order-list.css",
+      "PackagePath": "staticwebassets\\css\\order-list.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\personal-page.css",
+      "PackagePath": "staticwebassets\\css\\personal-page.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\product-home.css",
+      "PackagePath": "staticwebassets\\css\\product-home.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\recipe-list.css",
+      "PackagePath": "staticwebassets\\css\\recipe-list.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\recipe.css",
+      "PackagePath": "staticwebassets\\css\\recipe.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\search-commodity.css",
+      "PackagePath": "staticwebassets\\css\\search-commodity.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\search-recipe.css",
+      "PackagePath": "staticwebassets\\css\\search-recipe.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\slick-theme.css",
+      "PackagePath": "staticwebassets\\css\\slick-theme.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\css\\slick_slick.css",
+      "PackagePath": "staticwebassets\\css\\slick_slick.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\cart-first.js",
+      "PackagePath": "staticwebassets\\js\\cart-first.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\cart-second.js",
+      "PackagePath": "staticwebassets\\js\\cart-second.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\commodity.js",
+      "PackagePath": "staticwebassets\\js\\commodity.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\create-recipe.js",
+      "PackagePath": "staticwebassets\\js\\create-recipe.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\delivery_payment_method.js",
+      "PackagePath": "staticwebassets\\js\\delivery_payment_method.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\index.js",
+      "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\nav.js",
+      "PackagePath": "staticwebassets\\js\\nav.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\order-list.js",
+      "PackagePath": "staticwebassets\\js\\order-list.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\search-input.js",
+      "PackagePath": "staticwebassets\\js\\search-input.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\js\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\js\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\taiwan_districts.js",
+      "PackagePath": "staticwebassets\\js\\taiwan_districts.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\js\\wow.js",
+      "PackagePath": "staticwebassets\\js\\wow.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery\\dist\\jquery-3.7.0.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery-3.7.0.min.js"
+    },
+    {
+      "Id": "C:\\git\\UCook\\slnUCookRecipe\\prjMSITUCook\\wwwroot\\lib\\jquery\\dist\\js.cookie.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\js.cookie.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.prjMSITUCook.props",
+      "PackagePath": "build\\prjMSITUCook.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.prjMSITUCook.props",
+      "PackagePath": "buildMultiTargeting\\prjMSITUCook.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.prjMSITUCook.props",
+      "PackagePath": "buildTransitive\\prjMSITUCook.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.prjMSITUCook.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
