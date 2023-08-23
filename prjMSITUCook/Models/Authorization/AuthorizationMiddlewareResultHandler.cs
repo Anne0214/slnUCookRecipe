@@ -15,7 +15,10 @@ namespace prjMSITUCook.Models.Authorization
         /// <param name="authorizeResult"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+        public async Task HandleAsync(RequestDelegate next, 
+                                        HttpContext context, 
+                                        AuthorizationPolicy policy, 
+                                        PolicyAuthorizationResult authorizeResult)
         {
             if (!context.User.Identity.IsAuthenticated) {
                 context.Response.Redirect("/home/login"); //跳轉網頁

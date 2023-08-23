@@ -46,7 +46,6 @@ builder.Services.AddSignalR();
 //====注入IUserIdProvide我指定的實作====
 builder.Services.AddSingleton<IUserIdProvider, MemberIdProvider>();
 
-//AspNetCore Authentication用戶驗證操作機制註冊DI(在controller範圍外使用方式)
 builder.Services.AddHttpContextAccessor();
 
 //自訂用戶登入資訊操作註冊DI

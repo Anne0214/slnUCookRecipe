@@ -216,7 +216,7 @@
             
         });
 
-        //在該頁面上對作者的任何按讚、取消追蹤都會觸發這個事件
+        //在該頁面上對作者的任何按讚、追蹤都會觸發這個事件
         function SignalRForLikeAndFollow(){
             connection.invoke("IFollowOrLikeSomeone", '@Model.AuthorId').catch(function (err) {
                 return console.error(err.toString());
