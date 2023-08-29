@@ -22,6 +22,7 @@ namespace prjMSITUCook.Controllers
         {
             _host = host;
             _followRepo = followRepo;
+            _memberInfoService = memberInfoService;
         }
         
         public IActionResult Index(string section)
