@@ -28,7 +28,7 @@ namespace prjMSITUCookServices.Implement
         public RecipeService(UcookRecipeDatabaseContext context)
         {
             _context = context;
-            _commonService = new CommonService(_context);
+            _commonService = new CommonService(context);
 
             var config = new MapperConfiguration(cfg =>
              cfg.AddProfile<ServiceMapping>());

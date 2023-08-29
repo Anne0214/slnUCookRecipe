@@ -3616,11 +3616,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCookServices\\prjMSITUCookServices.csproj",
+      "projectUniqueName": "D:\\git\\slnUCook\\prjMSITUCookServices\\prjMSITUCookServices.csproj",
       "projectName": "prjMSITUCookServices",
-      "projectPath": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCookServices\\prjMSITUCookServices.csproj",
+      "projectPath": "D:\\git\\slnUCook\\prjMSITUCookServices\\prjMSITUCookServices.csproj",
       "packagesPath": "C:\\Users\\Anne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCookServices\\obj\\",
+      "outputPath": "D:\\git\\slnUCook\\prjMSITUCookServices\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anne\\AppData\\Roaming\\NuGet\\NuGet.Config",

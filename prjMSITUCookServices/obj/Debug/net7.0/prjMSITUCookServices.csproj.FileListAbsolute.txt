@@ -1,0 +1,14 @@
+D:\git\slnUCook\prjMSITUCookServices\bin\Debug\net7.0\prjMSITUCookServices.deps.json
+D:\git\slnUCook\prjMSITUCookServices\bin\Debug\net7.0\prjMSITUCookServices.runtimeconfig.json
+D:\git\slnUCook\prjMSITUCookServices\bin\Debug\net7.0\prjMSITUCookServices.dll
+D:\git\slnUCook\prjMSITUCookServices\bin\Debug\net7.0\prjMSITUCookServices.pdb
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.csproj.AssemblyReference.cache
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.GeneratedMSBuildEditorConfig.editorconfig
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.AssemblyInfoInputs.cache
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.AssemblyInfo.cs
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.csproj.CoreCompileInputs.cache
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.dll
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\refint\prjMSITUCookServices.dll
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.pdb
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\prjMSITUCookServices.genruntimeconfig.cache
+D:\git\slnUCook\prjMSITUCookServices\obj\Debug\net7.0\ref\prjMSITUCookServices.dll

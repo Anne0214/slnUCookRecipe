@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KgjMEbWHIBZ/uXa6fsr4IcgVAGTEGgzcWU4FdxfTLHW84ywFY3teKE2Z5uZZFTCeKEtkBhgEYGp/o3E+XaP/ig==",
+  "dgSpecHash": "yL2rqGsODQ1sbeaezHGv2SCi1vVfTG2scvXt7eEDAqEke49x634ax+OOcruPhfFi7qQZiLKFEgWsALMohSVAYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCook\\prjMSITUCook.csproj",
+  "projectFilePath": "D:\\git\\slnUCook\\prjMSITUCook\\prjMSITUCook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Anne\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Anne\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",

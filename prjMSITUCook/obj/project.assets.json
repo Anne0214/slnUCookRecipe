@@ -11772,11 +11772,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCook\\prjMSITUCook.csproj",
+      "projectUniqueName": "D:\\git\\slnUCook\\prjMSITUCook\\prjMSITUCook.csproj",
       "projectName": "prjMSITUCook",
-      "projectPath": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCook\\prjMSITUCook.csproj",
+      "projectPath": "D:\\git\\slnUCook\\prjMSITUCook\\prjMSITUCook.csproj",
       "packagesPath": "C:\\Users\\Anne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCook\\obj\\",
+      "outputPath": "D:\\git\\slnUCook\\prjMSITUCook\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anne\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -11794,8 +11794,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCookServices\\prjMSITUCookServices.csproj": {
-              "projectPath": "C:\\Users\\Anne\\Downloads\\slnUCook-master\\prjMSITUCookServices\\prjMSITUCookServices.csproj"
+            "D:\\git\\slnUCook\\prjMSITUCookServices\\prjMSITUCookServices.csproj": {
+              "projectPath": "D:\\git\\slnUCook\\prjMSITUCookServices\\prjMSITUCookServices.csproj"
             }
           }
         }
