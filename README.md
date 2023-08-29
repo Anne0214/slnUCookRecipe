@@ -23,7 +23,11 @@ UCook是一個食譜分享平台，優化食譜的搜尋與發表過程，讓料
 ### 測試注意事項
 1. 需先執行API專案後，複製該專案URL，再貼入本專案的`appsetting.json`中的`ApiHost`的value，否則無法測試追蹤、按讚等功能。
 2. 測試時API專案及本專案必須同時在運作狀態。
-
+3. 可使用以下帳號進行測試
+   ```
+   帳號 : tsn36974@zbock.com
+   密碼 : Aa@11111
+   ```
 ## 專案說明
 ### 功能介紹
 - 使用者可註冊、登入。
@@ -47,6 +51,10 @@ UCook是一個食譜分享平台，優化食譜的搜尋與發表過程，讓料
 - 版本控管: git,github
 - 第三方API: Imgur、ChatGPT(Chat Completions API)、農業部資料開放平台
 - 伺服器端快取: Memurai
+
+## 功能演示
+[iSpan資展國際【智慧應用微軟 C# 工程師就業養成班 MSIT 147期】期末專題成果發表會影片](https://www.youtube.com/watch?v=pOpW2hIQUVQ&ab_channel=%E8%B3%87%E5%B1%95%E5%9C%8B%E9%9A%9B-%E6%95%B8%E4%BD%8D%E8%BD%89%E5%9E%8B%E4%BA%BA%E6%89%8D%E5%8C%96%E8%82%B2%E8%80%85)
+00:23:45~00:35:12部分
 ### 作者
 **Anne** 
 
